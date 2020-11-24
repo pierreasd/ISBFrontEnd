@@ -31,6 +31,8 @@ export default function AdminPage(props) {
     });
   };
 
+  window.scrollTo({top: 0});
+
   return (
     <div>
       <Header

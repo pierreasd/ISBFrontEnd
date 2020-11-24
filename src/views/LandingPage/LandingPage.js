@@ -34,6 +34,8 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
+  window.scrollTo({top: 0});
+  
   return (
     <div>
       {/* <ListItem className={classes.listItem}>

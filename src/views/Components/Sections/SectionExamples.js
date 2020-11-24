@@ -26,6 +26,7 @@ import g4 from "assets/img/g4.JPG";
 import g5 from "assets/img/g5.JPG";
 import g6 from "assets/img/g6.JPG";
 import SectionModal from "./SectionModal";
+import { Link } from "react-router-dom";
 
 const data = [
   {
@@ -76,70 +77,25 @@ const useStyles = makeStyles(styles);
 
 export default function SectionExamples() {
   const classes = useStyles();
-  const [classicModal, setClassicModal] = React.useState(false);
 
   const listItem = data.map((dummy) => (
     <GridItem xs={12} sm={4} md={4}>
-      <img
-        src={dummy.img}
-        alt="..."
-        className={
-          classes.imgRaised + " " + classes.imgRounded + " " + classes.imgFluid
-        }
-      />
-      <Button
-        color="gray"
-        size="lg"
-        simple
-        onClick={() => setClassicModal(true)}
-      >
-        {dummy.title}
-      </Button>
-
-      <Dialog
-        classes={{
-          root: classes.center,
-          paper: classes.modal,
-        }}
-        open={classicModal}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={() => setClassicModal(false)}
-        aria-labelledby="classic-modal-slide-title"
-        aria-describedby="classic-modal-slide-description"
-      >
-        <DialogTitle
-          id="classic-modal-slide-title"
-          disableTypography
-          className={classes.modalHeader}
-        >
-          <IconButton
-            className={classes.modalCloseButton}
-            key="close"
-            aria-label="Close"
-            color="inherit"
-            onClick={() => setClassicModal(false)}
-          >
-            <Close className={classes.modalClose} />
-          </IconButton>
-          {/* <h4 className={classes.modalTitle}>Modal title</h4> */}
-        </DialogTitle>
-
-        <DialogContent
-          id="classic-modal-slide-description"
-          className={classes.modalBody}
-        >
-          <SectionCarousel />
-          {/* article goes here */}
-          <p>{dummy.article}</p>
-        </DialogContent>
-
-        <DialogActions className={classes.modalFooter}>
-          <Button onClick={() => setClassicModal(false)} color="danger" simple>
-            Tutup
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <Link to="/article">
+        <img
+          src={dummy.img}
+          alt="..."
+          className={
+            classes.imgRaised +
+            " " +
+            classes.imgRounded +
+            " " +
+            classes.imgFluid
+          }
+        />
+        <Button color="gray" size="lg" simple>
+          {dummy.title}
+        </Button>
+      </Link>
     </GridItem>
   ));
 
@@ -148,7 +104,7 @@ export default function SectionExamples() {
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
-            <h2 className={classes.title}>Articles</h2>
+            <h2 className={classes.title}>Latest Articles</h2>
           </GridItem>
         </GridContainer>
 
