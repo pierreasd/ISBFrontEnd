@@ -20,6 +20,7 @@ export default function CustomInput(props) {
     formControlProps,
     labelText,
     id,
+    type,
     labelProps,
     inputProps,
     error,
@@ -48,8 +49,8 @@ export default function CustomInput(props) {
     [classes.whiteInput]: white
   });
 
-  const isMultiline = multiline !== undefined ? true : false;
-  const isOutlined = outlined !== undefined ? true : false;
+  const isMultiline = multiline !== undefined;
+  const isOutlined = outlined !== undefined;
 
   var formControlClasses;
   if (formControlProps !== undefined) {
@@ -82,6 +83,7 @@ export default function CustomInput(props) {
               underline: underlineClasses,
             }}
             id={id}
+            type={type}
             multiline={isMultiline}
             rows={18}
             {...inputProps}
@@ -96,6 +98,7 @@ export default function CustomInput(props) {
               underline: underlineClasses
             }}
             id={id}
+            type={type}
             {...inputProps}
           />
         )
@@ -109,6 +112,7 @@ CustomInput.propTypes = {
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,
+  type: PropTypes.string,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   inputRootCustomClasses: PropTypes.string,

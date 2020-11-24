@@ -37,6 +37,12 @@ const adminPageStyle = {
     textDecoration: "none",
     fontWeight: "300"
   },
+  articles: {
+    margin: "1.071rem auto 0",
+    maxWidth: "600px",
+    fontWeight: "300",
+    textAlign: "left !important"
+  },
   space50: {
     height: "50px",
     display: "block"
