@@ -72,7 +72,9 @@ export default function ArticlePage(props) {
                 <div className={classes.title}>
                   <h3 className={classes.title}>{content.title} </h3>
                   <h6 className={classes.subtitle}>{content.author}</h6>
-                  <h6 className={classes.subtitle}>{content.created_datetime}</h6>
+                  <h6 className={classes.subtitle}>
+                    {content.created_datetime}
+                  </h6>
                 </div>
               </div>
             </GridItem>
