@@ -35,6 +35,7 @@ export default function ArticlePage(props) {
     body:
       "JAKARTA, Indonesia–Indonesia’s government has given a permit to the local unit of U.S. mining company Newmont Mining Corp. to export a total of 350,000 metric tons of copper concentrate within three years, a government official said Tuesday. For this year, they plan to (export) 160,000 tons,” said Raden Sukhyar, director general of minerals and coal at the Ministry of Energy and Mineral Resources. “We will increase the quota depending on their seriousness in building a smelter.” PT Newmont Nusa Tenggara said Monday it expects to resume exporting copper concentrate from Indonesia later this week. The company said it had received a permit after a nine-month halt following the country’s introduction of new export rules and a disagreement over new taxes. Earlier this month, the company agreed to pay export duties of 7.5% on copper concentrate, and pay higher royalties of 4% for copper, 3.75% for gold, and 3.25% for silver. Newmont will also provide a $25 million assurance bond to demonstrate its support for smelter development in Indonesia. The country is pushing companies to refine mineral products domestically, part of a drive to build up the resource-rich nation’s “value-added” economy. he company declined to provide a forecast for its exports or say when operations would resume at full capacity, but said all employees would be recalled within eight weeks. Prior to the introduction of the export rules in January, the company had forecast copper concentrate output of up to 125,000 metric tons from its Batu Hijau copper and gold mine in eastern Indonesia this year.",
     author: "Pierre G",
+    created_datetime: "25 November 2011 14:10",
     img: [
       {
         src: g1,
@@ -70,7 +71,8 @@ export default function ArticlePage(props) {
               <div className={classes.profile}>
                 <div className={classes.title}>
                   <h3 className={classes.title}>{content.title} </h3>
-                  <h6>By {content.author}</h6>
+                  <h6 className={classes.subtitle}>{content.author}</h6>
+                  <h6 className={classes.subtitle}>{content.created_datetime}</h6>
                 </div>
               </div>
             </GridItem>

@@ -34,6 +34,9 @@ const articlePageStyle = {
     textDecoration: "none",
     fontWeight: "300"
   },
+  subtitle:{
+    color: "#999"
+  },
   article: {
     margin: "1.071rem auto 0",
     maxWidth: "100%",
