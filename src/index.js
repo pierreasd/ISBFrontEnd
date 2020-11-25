@@ -22,7 +22,7 @@ ReactDOM.render(
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
       <Route path="/admin" component={AdminPage} />
-      <Route path="/article" component={ArticlePage} />
+      <Route path="/article/:id" component={ArticlePage} />
       <Route path="/" component={LandingPage} />
     </Switch>
   </Router>,

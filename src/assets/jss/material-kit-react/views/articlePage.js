@@ -36,7 +36,7 @@ const articlePageStyle = {
   },
   article: {
     margin: "1.071rem auto 0",
-    maxWidth: "600px",
+    maxWidth: "100%",
     textAlign: "left !important"
   },
   space50: {

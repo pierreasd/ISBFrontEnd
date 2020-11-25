@@ -27,6 +27,13 @@ import SectionCarousel from "views/Components/Sections/SectionCarousel.js";
 import SectionPills from "views/Components/Sections/SectionPills.js";
 import SectionExamples from "views/Components/Sections/SectionExamples.js";
 
+import g1 from "assets/img/g1.JPG";
+import g2 from "assets/img/g2.JPG";
+import g3 from "assets/img/g3.JPG";
+import g4 from "assets/img/g4.JPG";
+import g5 from "assets/img/g5.JPG";
+import g6 from "assets/img/g6.JPG";
+
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
@@ -35,6 +42,33 @@ export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   window.scrollTo({top: 0});
+
+  const pix = [
+    {
+      src: g1,
+      caption: "Ini Caption 1",
+    },
+    {
+      src: g2,
+      caption: "Ini Caption 2",
+    },
+    {
+      src: g3,
+      caption: "Ini Caption 3",
+    },
+    {
+      src: g4,
+      caption: "Ini Caption 4",
+    },
+    {
+      src: g5,
+      caption: "Ini Caption 5",
+    },
+    {
+      src: g6,
+      caption: "Ini Caption 6",
+    },
+  ]
   
   return (
     <div>
@@ -61,17 +95,6 @@ export default function LandingPage(props) {
               <h4>
                 PT. Indotan Sumbawa Bangkit holds an IUP Exploration covering the Taliwang Gold Project which is a prospective gold, silver and copper concession in Sumbawa, Indonesia.
               </h4>
-              <br />
-              {/* <Button
-                color="danger"
-                size="lg"
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fas fa-play" />
-                Watch video
-              </Button> */}
             </GridItem>
           </GridContainer>
         </div>
@@ -80,7 +103,9 @@ export default function LandingPage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <ProductSection />
-          <SectionCarousel />
+
+          <SectionCarousel img={pix}/>
+          
           <SectionExamples />
           <SectionPills />
           {/* <TeamSection /> */}
