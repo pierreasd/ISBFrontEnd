@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios';
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -23,14 +25,30 @@ export default function AdminPage(props) {
   const { ...rest } = props;
 
   const [articleForm, setArticleForm] = useState({});
+  const [imageUpload, setImageUpload] = useState({});
 
   const handleFormChange = (e) => {
-    console.log(e.target.name)
     setArticleForm({
       ...articleForm,
-      [e.target.name]: e.target.name !== "img" ? e.target.value : e.target.files,
+      [e.target.name]: e.target.value
     });
   };
+
+  const handleImageUpload = (e) => {
+    setImageUpload({
+      ...imageUpload,
+      [e.target.name]: e.target.files
+    })
+  }
+
+  function submitArticle (){
+    const imageData = new FormData();
+
+    imageData.append('img_upload', imageUpload);
+
+    axios.post(`http://localhost:8080/uploadImage`, imageData);
+    axios.post(`http://localhost:8080/postArticle`, articleForm);
+  }
 
   window.scrollTo({ top: 0 });
 
@@ -102,14 +120,14 @@ export default function AdminPage(props) {
                   /> */}
                   <input
                     id="img"
-                    name="img"
+                    type="file"
+                    name="img_upload"
                     accept="image/*"
                     className={classes.input}
                     // style={{ display: "none" }}
                     id="raised-button-file"
                     multiple
-                    type="file"
-                    onChange={handleFormChange}
+                    onChange={handleImageUpload}
                   />
 
                   <p>Upload gambar max. 1MB</p>
@@ -121,9 +139,9 @@ export default function AdminPage(props) {
                     // disabled={
                     //   articleForm.title === undefined || articleForm.title === ""
                     //   || articleForm.body === undefined || articleForm.body === ""
-                    //   || articleForm.img === undefined || articleForm.body === ""
+                    //   || imageUpload.img_upload === undefined || imageUpload.img_upload === ""
                     // }
-                    onClick={() => console.log(articleForm)}
+                    onClick={() => submitArticle()}
                   >
                     Submit
                   </Button>
