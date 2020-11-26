@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -25,13 +25,14 @@ export default function AdminPage(props) {
   const [articleForm, setArticleForm] = useState({});
 
   const handleFormChange = (e) => {
+    console.log(e.target.name)
     setArticleForm({
       ...articleForm,
-      [e.target.name]: [e.target.value]
+      [e.target.name]: e.target.name !== "img" ? e.target.value : e.target.files,
     });
   };
 
-  window.scrollTo({top: 0});
+  window.scrollTo({ top: 0 });
 
   return (
     <div>
@@ -60,7 +61,7 @@ export default function AdminPage(props) {
                     inputProps={{
                       placeholder: "Judul",
                       name: "title",
-                      onChange: handleFormChange
+                      onChange: handleFormChange,
                     }}
                     formControlProps={{
                       fullWidth: true,
@@ -75,7 +76,7 @@ export default function AdminPage(props) {
                     inputProps={{
                       placeholder: "Text",
                       name: "body",
-                      onChange: handleFormChange
+                      onChange: handleFormChange,
                     }}
                     formControlProps={{
                       fullWidth: true,
@@ -86,7 +87,7 @@ export default function AdminPage(props) {
                 </GridItem>
 
                 <GridItem xs={12} sm={12} md={6} lg={4}>
-                  <CustomInput
+                  {/* <CustomInput
                     id="img"
                     type="file"
                     inputProps={{
@@ -98,18 +99,31 @@ export default function AdminPage(props) {
                       fullWidth: true,
                     }}
                     outlined
+                  /> */}
+                  <input
+                    id="img"
+                    name="img"
+                    accept="image/*"
+                    className={classes.input}
+                    // style={{ display: "none" }}
+                    id="raised-button-file"
+                    multiple
+                    type="file"
+                    onChange={handleFormChange}
                   />
+
                   <p>Upload gambar max. 1MB</p>
                 </GridItem>
 
                 <GridItem xs={12} sm={4} md={4} lg={3}>
-                  <Button 
+                  <Button
                     color="primary"
-                    disabled={
-                      articleForm.title === undefined || articleForm.title === ""
-                      || articleForm.body === undefined || articleForm.body === ""
-                      || articleForm.img === undefined || articleForm.body === ""
-                    }
+                    // disabled={
+                    //   articleForm.title === undefined || articleForm.title === ""
+                    //   || articleForm.body === undefined || articleForm.body === ""
+                    //   || articleForm.img === undefined || articleForm.body === ""
+                    // }
+                    onClick={() => console.log(articleForm)}
                   >
                     Submit
                   </Button>

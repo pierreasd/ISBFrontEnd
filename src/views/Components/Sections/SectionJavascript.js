@@ -95,7 +95,7 @@ export default function SectionJavascript() {
                   >
 
                     {/* article goes here */}
-                    <SectionCarousel />
+                    {/* <SectionCarousel /> */}
                     <p>
                       Far far away, behind the word mountains, far from the
                       countries Vokalia and Consonantia, there live the blind

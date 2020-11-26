@@ -53,6 +53,7 @@ export default function CustomInput(props) {
   const isOutlined = outlined !== undefined;
 
   var formControlClasses;
+  
   if (formControlProps !== undefined) {
     formControlClasses = classNames(
       formControlProps.className,
