@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -25,30 +25,45 @@ export default function AdminPage(props) {
   const { ...rest } = props;
 
   const [articleForm, setArticleForm] = useState({});
-  const [imageUpload, setImageUpload] = useState({});
+  const [imageUpload, setImageUpload] = useState({
+    img_upload: [],
+  });
 
   const handleFormChange = (e) => {
     setArticleForm({
       ...articleForm,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleImageUpload = (e) => {
+    // for (var i of e.target.files) {
+    //   setImageUpload(e.target.files);
+    // }
+
     setImageUpload({
       ...imageUpload,
-      [e.target.name]: e.target.files
-    })
-  }
+      img_upload: [...e.target.files],
+    });
+  };
 
-  function submitArticle (){
-    const imageData = new FormData();
+  const submitArticle = (e) => {
+    // e.preventDefault();
+    const data = new FormData();
 
-    imageData.append('img_upload', imageUpload);
+    console.log(imageUpload.img_upload);
+    data.append("img_upload", imageUpload.img_upload[0]);
+    data.append("article_title", articleForm.title);
+    data.append("article_body", articleForm.body);
 
-    axios.post(`http://localhost:8080/uploadImage`, imageData);
-    axios.post(`http://localhost:8080/postArticle`, articleForm);
-  }
+    axios
+      .post("https://httpbin.org/anything", data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    axios.post(`http://localhost:8080/uploadImage`, data);
+    // axios.post(`http://localhost:8080/postArticle`, articleForm);
+  };
 
   window.scrollTo({ top: 0 });
 
@@ -118,17 +133,18 @@ export default function AdminPage(props) {
                     }}
                     outlined
                   /> */}
-                  <input
-                    id="img"
-                    type="file"
-                    name="img_upload"
-                    accept="image/*"
-                    className={classes.input}
-                    // style={{ display: "none" }}
-                    id="raised-button-file"
-                    multiple
-                    onChange={handleImageUpload}
-                  />
+                  <form>
+                    <input
+                      id="img"
+                      type="file"
+                      name="img_upload"
+                      accept="image/*"
+                      className={classes.input}
+                      // style={{ display: "none" }}
+                      id="raised-button-file"
+                      onChange={handleImageUpload}
+                    />
+                  </form>
 
                   <p>Upload gambar max. 1MB</p>
                 </GridItem>
@@ -136,11 +152,11 @@ export default function AdminPage(props) {
                 <GridItem xs={12} sm={4} md={4} lg={3}>
                   <Button
                     color="primary"
-                    // disabled={
-                    //   articleForm.title === undefined || articleForm.title === ""
-                    //   || articleForm.body === undefined || articleForm.body === ""
-                    //   || imageUpload.img_upload === undefined || imageUpload.img_upload === ""
-                    // }
+                    disabled={
+                      articleForm.title === undefined || articleForm.title === ""
+                      || articleForm.body === undefined || articleForm.body === ""
+                      || imageUpload.img_upload.length === 0
+                    }
                     onClick={() => submitArticle()}
                   >
                     Submit
