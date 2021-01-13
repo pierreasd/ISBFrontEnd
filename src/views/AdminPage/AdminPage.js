@@ -7,6 +7,10 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 
+// Text editor
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -24,10 +28,14 @@ export default function AdminPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
 
-  const [articleForm, setArticleForm] = useState({});
-  const [imageUpload, setImageUpload] = useState({
-    img_upload: [],
+  // const [body, setBody] = useState("");
+  const [articleForm, setArticleForm] = useState({
+    title: "",
+    body: ""
   });
+  // const [imageUpload, setImageUpload] = useState({
+  //   img_upload: [],
+  // });
 
   const handleFormChange = (e) => {
     setArticleForm({
@@ -36,33 +44,36 @@ export default function AdminPage(props) {
     });
   };
 
-  const handleImageUpload = (e) => {
-    // for (var i of e.target.files) {
-    //   setImageUpload(e.target.files);
-    // }
+  // const handleImageUpload = (e) => {
+  //   // for (var i of e.target.files) {
+  //   //   setImageUpload(e.target.files);
+  //   // }
 
-    setImageUpload({
-      ...imageUpload,
-      img_upload: [...e.target.files],
-    });
-  };
+  //   setImageUpload({
+  //     ...imageUpload,
+  //     img_upload: [...e.target.files],
+  //   });
+  // };
 
   const submitArticle = (e) => {
     // e.preventDefault();
-    const data = new FormData();
+    // const data = new FormData();
 
-    console.log(imageUpload.img_upload);
-    data.append("img_upload", imageUpload.img_upload[0]);
-    data.append("article_title", articleForm.title);
-    data.append("article_body", articleForm.body);
+    // console.log(imageUpload.img_upload);
+    // data.append("img_upload", imageUpload.img_upload[0]);
+    // data.append("article_title", articleForm.title);
+    // data.append("article_body", articleForm.body);
 
-    axios
-      .post("https://httpbin.org/anything", data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    // axios
+    //   .post("https://httpbin.org/anything", data)
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
 
-    axios.post(`http://localhost:8080/uploadImage`, data);
-    // axios.post(`http://localhost:8080/postArticle`, articleForm);
+    // axios.post(`http://localhost:8080/uploadImage`, data);
+
+    // For test Purposes
+    // console.log(articleForm);
+    axios.post(`http://localhost:8080/postArticle`, articleForm);
   };
 
   window.scrollTo({ top: 0 });
@@ -104,7 +115,7 @@ export default function AdminPage(props) {
                 </GridItem>
 
                 <GridItem xs={12} sm={12} md={12} lg={12}>
-                  <CustomInput
+                  {/* <CustomInput
                     id="body"
                     inputProps={{
                       placeholder: "Text",
@@ -116,8 +127,24 @@ export default function AdminPage(props) {
                     }}
                     multiline
                     outlined
+                  /> */}
+
+                  <CKEditor
+                    editor={ClassicEditor}
+                    data={articleForm.body}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      setArticleForm({
+                        ...articleForm,
+                        body: data
+                      });
+                    }}
                   />
                 </GridItem>
+
+                {/* <GridItem xs={12} sm={12} md={12} lg={12}>
+                  {parse(body)}
+                </GridItem> */}
 
                 <GridItem xs={12} sm={12} md={6} lg={4}>
                   {/* <CustomInput
@@ -133,7 +160,7 @@ export default function AdminPage(props) {
                     }}
                     outlined
                   /> */}
-                  <form>
+                  {/* <form>
                     <input
                       id="img"
                       type="file"
@@ -144,7 +171,7 @@ export default function AdminPage(props) {
                       id="raised-button-file"
                       onChange={handleImageUpload}
                     />
-                  </form>
+                  </form> */}
 
                   <p>Upload gambar max. 1MB</p>
                 </GridItem>
@@ -152,11 +179,13 @@ export default function AdminPage(props) {
                 <GridItem xs={12} sm={4} md={4} lg={3}>
                   <Button
                     color="primary"
-                    disabled={
-                      articleForm.title === undefined || articleForm.title === ""
-                      || articleForm.body === undefined || articleForm.body === ""
-                      || imageUpload.img_upload.length === 0
-                    }
+                    // disabled={
+                    //   articleForm.title === undefined 
+                    //   || articleForm.title === "" 
+                    //   || articleForm.body === undefined 
+                    //   || articleForm.body === "" 
+                    //   || imageUpload.img_upload.length === 0
+                    // }
                     onClick={() => submitArticle()}
                   >
                     Submit

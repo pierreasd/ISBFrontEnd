@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,9 @@ import g3 from "assets/img/g3.JPG";
 import g4 from "assets/img/g4.JPG";
 import g5 from "assets/img/g5.JPG";
 import g6 from "assets/img/g6.JPG";
+
+// other dependencies
+import axios from "axios";
 
 const articles = [
   {
@@ -64,6 +67,19 @@ const useStyles = makeStyles(styles);
 export default function SectionExamples() {
   const classes = useStyles();
 
+  const [articles, setArticles] = useState([]);
+
+  function getData() {
+    return axios.get("http://localhost:8080/getArticle/")
+    .then((res) =>  {
+      setArticles(res.data.values);
+    });
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+  
   const listItem = articles.map((data) => (
     <GridItem xs={12} sm={4} md={4}>
       <Link to={"/article/" + data.id}>
