@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -23,6 +23,9 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
 import image from "assets/img/bg7.jpg";
 
+// other dependencies
+import axios from "axios"
+
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
@@ -32,6 +35,23 @@ export default function LoginPage(props) {
   }, 700);
   const classes = useStyles();
   const { ...rest } = props;
+
+  const [loginForm, setLoginForm] = useState({
+    username: "",
+    password: ""
+  })
+
+  const handleLogin = (e) => {
+    setLoginForm({
+      ...loginForm,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const submitLogin = () => {
+    axios.post(`http://localhost:8080/users/login/`, loginForm).then((res) => console.log(res))
+  }
+
   return (
     <div>
       <Header
@@ -57,7 +77,7 @@ export default function LoginPage(props) {
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
                     <div className={classes.socialLine}>
-                      <Button
+                      {/* <Button
                         justIcon
                         href="#pablo"
                         target="_blank"
@@ -83,12 +103,14 @@ export default function LoginPage(props) {
                         onClick={e => e.preventDefault()}
                       >
                         <i className={"fab fa-google-plus-g"} />
-                      </Button>
+                      </Button> */}
                     </div>
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
+                  
+                  {/* <p className={classes.divider}>Or Be Classical</p> */}
+                  
                   <CardBody>
-                    <CustomInput
+                    {/* <CustomInput
                       labelText="First Name..."
                       id="first"
                       formControlProps={{
@@ -102,20 +124,22 @@ export default function LoginPage(props) {
                           </InputAdornment>
                         )
                       }}
-                    />
+                    /> */}
                     <CustomInput
-                      labelText="Email..."
-                      id="email"
+                      labelText="Username"
+                      id="username"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
-                        type: "email",
+                        type: "username",
                         endAdornment: (
                           <InputAdornment position="end">
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
-                        )
+                        ),
+                        onChange: handleLogin,
+                        name: "username"
                       }}
                     />
                     <CustomInput
@@ -133,13 +157,20 @@ export default function LoginPage(props) {
                             </Icon>
                           </InputAdornment>
                         ),
-                        autoComplete: "off"
+                        autoComplete: "off",
+                        onChange: handleLogin,
+                        name: "password"
                       }}
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
-                      Get started
+                    <Button 
+                      simple 
+                      color="primary" 
+                      size="lg"
+                      onClick = {() => submitLogin()}
+                    >
+                      Submit
                     </Button>
                   </CardFooter>
                 </form>

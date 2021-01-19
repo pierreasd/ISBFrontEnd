@@ -55,7 +55,7 @@ export default function AdminPage(props) {
   //   });
   // };
 
-  const submitArticle = (e) => {
+  const submitArticle = () => {
     // e.preventDefault();
     // const data = new FormData();
 
