@@ -61,7 +61,7 @@ export default function AdminPage(props) {
       if(res.data.status === 200){
         console.log('okay')
       }else{
-        console.log('unauthorized')
+        console.log('unauthorized');
       }
     })
   }
