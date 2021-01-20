@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -33,13 +34,18 @@ export default function LoginPage(props) {
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
-  const classes = useStyles();
+  const classes = useStyles()
+  const history = useHistory()
   const { ...rest } = props;
 
   const [loginForm, setLoginForm] = useState({
-    username: "",
-    password: ""
+    username: null,
+    password: null,
+    login: false,
+    store: null,
   })
+
+  const [auth, setAuth] = useState(false);
 
   const handleLogin = (e) => {
     setLoginForm({
@@ -49,7 +55,24 @@ export default function LoginPage(props) {
   }
 
   const submitLogin = () => {
-    axios.post(`http://localhost:8080/users/login/`, loginForm).then((res) => console.log(res))
+    try{
+      axios.post(`http://localhost:8080/users/login/`, loginForm).then((res) => {
+        if (res.data.status === 200) {
+          localStorage.setItem('login', JSON.stringify({
+            login: true,
+            accessToken: res.data.accessToken
+          }))
+          loginForm.login = true;
+          history.push('/admin') 
+        } else {
+          alert('Wrong Username/Password')
+        }
+      })     
+
+
+    }catch(e){
+      alert(e.message)
+    }
   }
 
   return (

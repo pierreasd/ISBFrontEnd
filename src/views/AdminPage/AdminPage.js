@@ -27,7 +27,8 @@ const useStyles = makeStyles(styles);
 export default function AdminPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-
+  const login = JSON.parse(localStorage.getItem('login'))
+  axios.defaults.headers.common = {'Authorization' : `Bearer ${login.accessToken}`}
   // const [body, setBody] = useState("");
   const [articleForm, setArticleForm] = useState({
     title: "",
@@ -55,6 +56,16 @@ export default function AdminPage(props) {
   //   });
   // };
 
+  const getArticle = () => {
+    axios.get("http://localhost:8080/getArticle").then((res) => {
+      if(res.data.status === 200){
+        console.log('okay')
+      }else{
+        console.log('unauthorized')
+      }
+    })
+  }
+
   const submitArticle = () => {
     // e.preventDefault();
     // const data = new FormData();
@@ -77,6 +88,8 @@ export default function AdminPage(props) {
   };
 
   window.scrollTo({ top: 0 });
+
+  getArticle();
 
   return (
     <div>
