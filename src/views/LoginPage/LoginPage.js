@@ -45,8 +45,6 @@ export default function LoginPage(props) {
     store: null,
   })
 
-  const [auth, setAuth] = useState(false);
-
   const handleLogin = (e) => {
     setLoginForm({
       ...loginForm,

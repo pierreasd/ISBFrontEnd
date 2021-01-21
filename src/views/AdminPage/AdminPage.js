@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // nodejs library that concatenates classes
@@ -27,12 +27,18 @@ const useStyles = makeStyles(styles);
 export default function AdminPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  const login = JSON.parse(localStorage.getItem('login'))
-  axios.defaults.headers.common = {'Authorization' : `Bearer ${login.accessToken}`}
+  const login =
+    localStorage.getItem("login") == null
+      ? false
+      : JSON.parse(localStorage.getItem("login"));
+  axios.defaults.headers.common = {
+    Authorization: `Bearer ${login.accessToken}`,
+  };
+
   // const [body, setBody] = useState("");
   const [articleForm, setArticleForm] = useState({
     title: "",
-    body: ""
+    body: "",
   });
   // const [imageUpload, setImageUpload] = useState({
   //   img_upload: [],
@@ -58,13 +64,15 @@ export default function AdminPage(props) {
 
   const getArticle = () => {
     axios.get("http://localhost:8080/getArticle").then((res) => {
-      if(res.data.status === 200){
-        console.log('okay')
-      }else{
-        console.log('unauthorized');
+      if (res.data.status === 200) {
+        console.log("okay");
+      } else {
+        console.log("unauthorized");
       }
-    })
-  }
+    });
+
+    console.log(login)
+  };
 
   const submitArticle = () => {
     // e.preventDefault();
@@ -89,7 +97,9 @@ export default function AdminPage(props) {
 
   window.scrollTo({ top: 0 });
 
-  getArticle();
+  useEffect(() => {
+    getArticle();
+  }, []);
 
   return (
     <div>
@@ -105,30 +115,35 @@ export default function AdminPage(props) {
 
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <GridContainer justify="flex-start" direction="row">
-            <GridItem xs={12} sm={12} md={8} lg={8}>
-              <GridContainer direction="column">
-                <GridItem xs={12} sm={12} md={8} lg={8}>
-                  <h3 className={classes.title}>Tulis Artikel</h3>
-                </GridItem>
+          {login.login == null || login.login == false ? (
+            <div>
+              <h3 className={classes.title}>Unauthorized access. please login</h3>
+            </div>
+          ) : (
+            <GridContainer justify="flex-start" direction="row">
+              <GridItem xs={12} sm={12} md={8} lg={8}>
+                <GridContainer direction="column">
+                  <GridItem xs={12} sm={12} md={8} lg={8}>
+                    <h3 className={classes.title}>Tulis Artikel</h3>
+                  </GridItem>
 
-                <GridItem xs={12} sm={12} md={12} lg={12}>
-                  <CustomInput
-                    id="title"
-                    inputProps={{
-                      placeholder: "Judul",
-                      name: "title",
-                      onChange: handleFormChange,
-                    }}
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    outlined
-                  />
-                </GridItem>
+                  <GridItem xs={12} sm={12} md={12} lg={12}>
+                    <CustomInput
+                      id="title"
+                      inputProps={{
+                        placeholder: "Judul",
+                        name: "title",
+                        onChange: handleFormChange,
+                      }}
+                      formControlProps={{
+                        fullWidth: true,
+                      }}
+                      outlined
+                    />
+                  </GridItem>
 
-                <GridItem xs={12} sm={12} md={12} lg={12}>
-                  {/* <CustomInput
+                  <GridItem xs={12} sm={12} md={12} lg={12}>
+                    {/* <CustomInput
                     id="body"
                     inputProps={{
                       placeholder: "Text",
@@ -142,25 +157,25 @@ export default function AdminPage(props) {
                     outlined
                   /> */}
 
-                  <CKEditor
-                    editor={ClassicEditor}
-                    data={articleForm.body}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      setArticleForm({
-                        ...articleForm,
-                        body: data
-                      });
-                    }}
-                  />
-                </GridItem>
+                    <CKEditor
+                      editor={ClassicEditor}
+                      data={articleForm.body}
+                      onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setArticleForm({
+                          ...articleForm,
+                          body: data,
+                        });
+                      }}
+                    />
+                  </GridItem>
 
-                {/* <GridItem xs={12} sm={12} md={12} lg={12}>
+                  {/* <GridItem xs={12} sm={12} md={12} lg={12}>
                   {parse(body)}
                 </GridItem> */}
 
-                <GridItem xs={12} sm={12} md={6} lg={4}>
-                  {/* <CustomInput
+                  <GridItem xs={12} sm={12} md={6} lg={4}>
+                    {/* <CustomInput
                     id="img"
                     type="file"
                     inputProps={{
@@ -173,7 +188,7 @@ export default function AdminPage(props) {
                     }}
                     outlined
                   /> */}
-                  {/* <form>
+                    {/* <form>
                     <input
                       id="img"
                       type="file"
@@ -186,40 +201,42 @@ export default function AdminPage(props) {
                     />
                   </form> */}
 
-                  <p>Upload gambar max. 1MB</p>
-                </GridItem>
+                    <p>Upload gambar max. 1MB</p>
+                  </GridItem>
 
-                <GridItem xs={12} sm={4} md={4} lg={3}>
-                  <Button
-                    color="primary"
-                    // disabled={
-                    //   articleForm.title === undefined 
-                    //   || articleForm.title === "" 
-                    //   || articleForm.body === undefined 
-                    //   || articleForm.body === "" 
-                    //   || imageUpload.img_upload.length === 0
-                    // }
-                    onClick={() => submitArticle()}
-                  >
-                    Submit
-                  </Button>
-                </GridItem>
-              </GridContainer>
-            </GridItem>
+                  <GridItem xs={12} sm={4} md={4} lg={3}>
+                    <Button
+                      color="primary"
+                      // disabled={
+                      //   articleForm.title === undefined
+                      //   || articleForm.title === ""
+                      //   || articleForm.body === undefined
+                      //   || articleForm.body === ""
+                      //   || imageUpload.img_upload.length === 0
+                      // }
+                      onClick={() => submitArticle()}
+                    >
+                      Submit
+                    </Button>
+                  </GridItem>
+                </GridContainer>
+              </GridItem>
 
-            <GridItem xs={12} sm={12} md={4} lg={4}>
-              <GridContainer justify="flex-start">
-                <GridItem xs={12} sm={12} md={12} lg={12}>
-                  <h3 className={classes.title}>Artikel Anda</h3>
-                </GridItem>
+              <GridItem xs={12} sm={12} md={4} lg={4}>
+                <GridContainer justify="flex-start">
+                  <GridItem xs={12} sm={12} md={12} lg={12}>
+                    <h3 className={classes.title}>Artikel Anda</h3>
+                  </GridItem>
 
-                <GridItem xs={12} sm={12} md={12} lg={12}>
-                  <p className={classes.articles}>INDOTAN PTISB</p>
-                </GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
+                  <GridItem xs={12} sm={12} md={12} lg={12}>
+                    <p className={classes.articles}>INDOTAN PTISB</p>
+                  </GridItem>
+                </GridContainer>
+              </GridItem>
+            </GridContainer>
+          )}
         </div>
+
         <div className={classes.space50} />
       </div>
       <Footer />
