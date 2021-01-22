@@ -22,6 +22,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import CustomInput from "components/CustomInput/CustomInput";
 
 import styles from "assets/jss/material-kit-react/views/adminPage.js";
+import "./config.css"
 
 const useStyles = makeStyles(styles);
 
@@ -105,12 +106,12 @@ export default function AdminPage(props) {
   };
 
   const logout = () => {
-    axios.delete(`http://localhost:8080/users/logout`, {
-      token: login.refreshToken
-    }).then(
-      history.push("/login-page")
-    )
-  }
+    axios
+      .delete(`http://localhost:8080/users/logout`, {
+        token: login.refreshToken,
+      })
+      .then(history.push("/login-page"));
+  };
 
   window.scrollTo({ top: 0 });
 
@@ -135,7 +136,8 @@ export default function AdminPage(props) {
           {login.login === null || login.login === false ? (
             <div>
               <h3 className={classes.title}>
-                Your session has expired, please login again.
+                Your session has expired, please{" "}
+                <Link to="/login-page/">login</Link> again.
               </h3>
             </div>
           ) : (
@@ -165,6 +167,9 @@ export default function AdminPage(props) {
                     <CKEditor
                       editor={ClassicEditor}
                       data={articleForm.body}
+                      config={{
+                        height: "500px"
+                      }}
                       onChange={(event, editor) => {
                         const data = editor.getData();
                         setArticleForm({
@@ -245,11 +250,17 @@ export default function AdminPage(props) {
                   </GridItem>
 
                   <GridItem xs={12} sm={12} md={12} lg={12}>
-                    {myArticles.map((myArticle) => (
-                      <Link to={`/article/${myArticle.id}`}>
-                        <p className={classes.articles}>{myArticle.title}</p>
-                      </Link>
-                    ))}
+                    {myArticles.length === 0 ? (
+                      <p className={classes.articles}>
+                        Anda belum memiliki artikel.
+                      </p>
+                    ) : (
+                      myArticles.map((myArticle) => (
+                        <Link to={`/article/${myArticle.id}`}>
+                          <p className={classes.articles}>{myArticle.title}</p>
+                        </Link>
+                      ))
+                    )}
                   </GridItem>
                 </GridContainer>
               </GridItem>
