@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -27,10 +27,11 @@ const useStyles = makeStyles(styles);
 
 export default function AdminPage(props) {
   const classes = useStyles();
+  const history = useHistory();
   const { ...rest } = props;
   const login =
     localStorage.getItem("login") == null
-      ? false
+      ? null
       : JSON.parse(localStorage.getItem("login"));
   axios.defaults.headers.common = {
     Authorization: `Bearer ${login.accessToken}`,
@@ -41,7 +42,7 @@ export default function AdminPage(props) {
   const [articleForm, setArticleForm] = useState({
     title: "",
     body: "",
-    author: "",
+    author: login.author,
   });
   // const [imageUpload, setImageUpload] = useState({
   //   img_upload: [],
@@ -103,6 +104,14 @@ export default function AdminPage(props) {
     axios.post(`http://localhost:8080/postArticle`, articleForm);
   };
 
+  const logout = () => {
+    axios.delete(`http://localhost:8080/users/logout`, {
+      token: login.refreshToken
+    }).then(
+      history.push("/login-page")
+    )
+  }
+
   window.scrollTo({ top: 0 });
 
   useEffect(() => {
@@ -113,7 +122,7 @@ export default function AdminPage(props) {
     <div>
       <Header
         color="dark"
-        brand="Halaman Admin"
+        brand={login.login ? `Hello, ${login.author}` : null}
         rightLinks={<HeaderLinks />}
         fixed
         {...rest}
@@ -153,20 +162,6 @@ export default function AdminPage(props) {
                   </GridItem>
 
                   <GridItem xs={12} sm={12} md={12} lg={12}>
-                    {/* <CustomInput
-                    id="body"
-                    inputProps={{
-                      placeholder: "Text",
-                      name: "body",
-                      onChange: handleFormChange,
-                    }}
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    multiline
-                    outlined
-                  /> */}
-
                     <CKEditor
                       editor={ClassicEditor}
                       data={articleForm.body}
@@ -179,11 +174,6 @@ export default function AdminPage(props) {
                       }}
                     />
                   </GridItem>
-
-                  {/* <GridItem xs={12} sm={12} md={12} lg={12}>
-                  {parse(body)}
-                </GridItem> */}
-
                   <GridItem xs={12} sm={12} md={6} lg={4}>
                     {/* <CustomInput
                     id="img"
@@ -229,6 +219,22 @@ export default function AdminPage(props) {
                       Submit
                     </Button>
                   </GridItem>
+
+                  <GridItem xs={12} sm={4} md={4} lg={3}>
+                    <Button
+                      color="primary"
+                      // disabled={
+                      //   articleForm.title === undefined
+                      //   || articleForm.title === ""
+                      //   || articleForm.body === undefined
+                      //   || articleForm.body === ""
+                      //   || imageUpload.img_upload.length === 0
+                      // }
+                      onClick={() => logout()}
+                    >
+                      Logout
+                    </Button>
+                  </GridItem>
                 </GridContainer>
               </GridItem>
 
@@ -239,12 +245,11 @@ export default function AdminPage(props) {
                   </GridItem>
 
                   <GridItem xs={12} sm={12} md={12} lg={12}>
-
-                    {myArticles.map(myArticle => 
+                    {myArticles.map((myArticle) => (
                       <Link to={`/article/${myArticle.id}`}>
                         <p className={classes.articles}>{myArticle.title}</p>
                       </Link>
-                    )}
+                    ))}
                   </GridItem>
                 </GridContainer>
               </GridItem>

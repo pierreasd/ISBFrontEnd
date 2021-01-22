@@ -25,56 +25,55 @@ import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import image from "assets/img/bg7.jpg";
 
 // other dependencies
-import axios from "axios"
+import axios from "axios";
 
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-  setTimeout(function() {
+  setTimeout(function () {
     setCardAnimation("");
   }, 700);
-  const classes = useStyles()
-  const history = useHistory()
+  const classes = useStyles();
+  const history = useHistory();
   const { ...rest } = props;
 
   const [loginForm, setLoginForm] = useState({
     username: null,
     password: null,
-    login: false,
-    store: null,
-  })
+  });
 
   const handleLogin = (e) => {
     setLoginForm({
       ...loginForm,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const submitLogin = () => {
-    try{
-      axios.post(`http://localhost:8080/users/login/`, loginForm).then((res) => {
-        if (res.data.status === 200) {
-          console.log(res.data)
-          localStorage.setItem('login', JSON.stringify({
-            login: true,
-            author: res.data.username,
-            accessToken: res.data.accessToken,
-            refreshToken: res.data.refreshToken
-          }))
-          loginForm.login = true;
-          history.push('/admin') 
-        } else {
-          alert('Wrong Username/Password')
-        }
-      })     
-
-
-    }catch(e){
-      alert(e.message)
+    try {
+      axios
+        .post(`http://localhost:8080/users/login/`, loginForm)
+        .then((res) => {
+          if (res.data.status === 200) {
+            localStorage.setItem(
+              "login",
+              JSON.stringify({
+                login: true,
+                author: res.data.username,
+                accessToken: res.data.accessToken,
+                refreshToken: res.data.refreshToken,
+              })
+            );
+            history.push("/admin");
+          } else {
+            alert("Wrong Username/Password");
+          }
+        });
+    } catch (e) {
+      alert(e.message);
     }
-  }
+  };
 
   return (
     <div>
@@ -90,7 +89,7 @@ export default function LoginPage(props) {
         style={{
           backgroundImage: "url(" + image + ")",
           backgroundSize: "cover",
-          backgroundPosition: "top center"
+          backgroundPosition: "top center",
         }}
       >
         <div className={classes.container}>
@@ -130,9 +129,9 @@ export default function LoginPage(props) {
                       </Button> */}
                     </div>
                   </CardHeader>
-                  
+
                   {/* <p className={classes.divider}>Or Be Classical</p> */}
-                  
+
                   <CardBody>
                     {/* <CustomInput
                       labelText="First Name..."
@@ -153,7 +152,7 @@ export default function LoginPage(props) {
                       labelText="Username"
                       id="username"
                       formControlProps={{
-                        fullWidth: true
+                        fullWidth: true,
                       }}
                       inputProps={{
                         type: "username",
@@ -163,14 +162,14 @@ export default function LoginPage(props) {
                           </InputAdornment>
                         ),
                         onChange: handleLogin,
-                        name: "username"
+                        name: "username",
                       }}
                     />
                     <CustomInput
                       labelText="Password"
                       id="pass"
                       formControlProps={{
-                        fullWidth: true
+                        fullWidth: true,
                       }}
                       inputProps={{
                         type: "password",
@@ -183,16 +182,16 @@ export default function LoginPage(props) {
                         ),
                         autoComplete: "off",
                         onChange: handleLogin,
-                        name: "password"
+                        name: "password",
                       }}
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button 
-                      simple 
-                      color="primary" 
+                    <Button
+                      simple
+                      color="primary"
                       size="lg"
-                      onClick = {() => submitLogin()}
+                      onClick={() => submitLogin()}
                     >
                       Submit
                     </Button>
