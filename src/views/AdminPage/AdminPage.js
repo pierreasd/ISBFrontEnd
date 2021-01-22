@@ -22,7 +22,8 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import CustomInput from "components/CustomInput/CustomInput";
 
 import styles from "assets/jss/material-kit-react/views/adminPage.js";
-import "./config.css"
+import "./config.css";
+import { DesktopWindows } from "@material-ui/icons";
 
 const useStyles = makeStyles(styles);
 
@@ -47,7 +48,7 @@ export default function AdminPage(props) {
   });
   // const [imageUpload, setImageUpload] = useState({
   //   img_upload: [],
-  // });
+  // })
 
   const handleFormChange = (e) => {
     setArticleForm({
@@ -58,14 +59,14 @@ export default function AdminPage(props) {
 
   // const handleImageUpload = (e) => {
   //   // for (var i of e.target.files) {
-  //   //   setImageUpload(e.target.files);
+  //   //   setImageUpload(e.target.files)
   //   // }
 
   //   setImageUpload({
   //     ...imageUpload,
   //     img_upload: [...e.target.files],
-  //   });
-  // };
+  //   })
+  // }
 
   const getArticle = () => {
     axios
@@ -85,24 +86,29 @@ export default function AdminPage(props) {
   };
 
   const submitArticle = () => {
-    // e.preventDefault();
-    // const data = new FormData();
+    // e.preventDefault()
+    // const data = new FormData()
 
-    // console.log(imageUpload.img_upload);
-    // data.append("img_upload", imageUpload.img_upload[0]);
-    // data.append("article_title", articleForm.title);
-    // data.append("article_body", articleForm.body);
+    // console.log(imageUpload.img_upload)
+    // data.append("img_upload", imageUpload.img_upload[0])
+    // data.append("article_title", articleForm.title)
+    // data.append("article_body", articleForm.body)
 
     // axios
     //   .post("https://httpbin.org/anything", data)
     //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    //   .catch((err) => console.log(err))
 
-    // axios.post(`http://localhost:8080/uploadImage`, data);
+    // axios.post(`http://localhost:8080/uploadImage`, data)
 
     // For test Purposes
-    // console.log(articleForm);
-    axios.post(`http://localhost:8080/postArticle`, articleForm);
+    // console.log(articleForm)
+    axios.post(`http://localhost:8080/postArticle`, articleForm).then((res) => {
+      if (res.data.status === 200) {
+        alert("Berhasil menambahkan artikel");
+        window.location.reload();
+      }
+    });
   };
 
   const logout = () => {
@@ -123,7 +129,15 @@ export default function AdminPage(props) {
     <div>
       <Header
         color="dark"
-        brand={login.login ? `Hello, ${login.author}` : null}
+        brand={
+          login.login 
+          ? 
+          <div>
+            Halo, {login.author} <Link onClick={() => logout()}>(logout)</Link>
+          </div>
+          : null
+        }
+
         rightLinks={<HeaderLinks />}
         fixed
         {...rest}
@@ -168,7 +182,7 @@ export default function AdminPage(props) {
                       editor={ClassicEditor}
                       data={articleForm.body}
                       config={{
-                        height: "500px"
+                        height: "500px",
                       }}
                       onChange={(event, editor) => {
                         const data = editor.getData();
@@ -179,8 +193,10 @@ export default function AdminPage(props) {
                       }}
                     />
                   </GridItem>
-                  <GridItem xs={12} sm={12} md={6} lg={4}>
-                    {/* <CustomInput
+
+                  {/* upload image */}
+                  {/* <GridItem xs={12} sm={12} md={6} lg={4}>
+                    <CustomInput
                     id="img"
                     type="file"
                     inputProps={{
@@ -192,8 +208,8 @@ export default function AdminPage(props) {
                       fullWidth: true,
                     }}
                     outlined
-                  /> */}
-                    {/* <form>
+                  />
+                    <form>
                     <input
                       id="img"
                       type="file"
@@ -204,40 +220,23 @@ export default function AdminPage(props) {
                       id="raised-button-file"
                       onChange={handleImageUpload}
                     />
-                  </form> */}
+                  </form>
 
                     <p>Upload gambar max. 1MB</p>
-                  </GridItem>
+                  </GridItem> */}
 
                   <GridItem xs={12} sm={4} md={4} lg={3}>
                     <Button
-                      color="primary"
-                      // disabled={
-                      //   articleForm.title === undefined
-                      //   || articleForm.title === ""
-                      //   || articleForm.body === undefined
-                      //   || articleForm.body === ""
-                      //   || imageUpload.img_upload.length === 0
-                      // }
+                      color="warning"
+                      disabled={
+                        articleForm.title === undefined
+                        || articleForm.title === ""
+                        || articleForm.body === undefined
+                        || articleForm.body === ""
+                      }
                       onClick={() => submitArticle()}
                     >
-                      Submit
-                    </Button>
-                  </GridItem>
-
-                  <GridItem xs={12} sm={4} md={4} lg={3}>
-                    <Button
-                      color="primary"
-                      // disabled={
-                      //   articleForm.title === undefined
-                      //   || articleForm.title === ""
-                      //   || articleForm.body === undefined
-                      //   || articleForm.body === ""
-                      //   || imageUpload.img_upload.length === 0
-                      // }
-                      onClick={() => logout()}
-                    >
-                      Logout
+                      Tambahkan Artikel
                     </Button>
                   </GridItem>
                 </GridContainer>
