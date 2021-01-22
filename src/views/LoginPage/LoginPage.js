@@ -56,9 +56,12 @@ export default function LoginPage(props) {
     try{
       axios.post(`http://localhost:8080/users/login/`, loginForm).then((res) => {
         if (res.data.status === 200) {
+          console.log(res.data)
           localStorage.setItem('login', JSON.stringify({
             login: true,
-            accessToken: res.data.accessToken
+            author: res.data.username,
+            accessToken: res.data.accessToken,
+            refreshToken: res.data.refreshToken
           }))
           loginForm.login = true;
           history.push('/admin') 

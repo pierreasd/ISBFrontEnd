@@ -82,7 +82,7 @@ export default function SectionExamples() {
   
   const listItem = articles.map((data) => (
     <GridItem xs={12} sm={4} md={4}>
-      <Link to={"/article/" + data.id}>
+      <Link to={`/article/${data.id}`}>
         <img
           src={data.img}
           alt="..."

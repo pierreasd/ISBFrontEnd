@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -35,10 +36,12 @@ export default function AdminPage(props) {
     Authorization: `Bearer ${login.accessToken}`,
   };
 
-  // const [body, setBody] = useState("");
+  const [myArticles, setMyArticles] = useState([]);
+
   const [articleForm, setArticleForm] = useState({
     title: "",
     body: "",
+    author: "",
   });
   // const [imageUpload, setImageUpload] = useState({
   //   img_upload: [],
@@ -63,15 +66,20 @@ export default function AdminPage(props) {
   // };
 
   const getArticle = () => {
-    axios.get("http://localhost:8080/getArticle").then((res) => {
-      if (res.data.status === 200) {
-        console.log("okay");
-      } else {
-        console.log("unauthorized");
-      }
-    });
-
-    console.log(login)
+    axios
+      .get("http://localhost:8080/getMyArticles")
+      .then((res) => {
+        if (res.status === 200) setMyArticles(res.data.values);
+      })
+      .catch((res) => {
+        localStorage.setItem(
+          "login",
+          JSON.stringify({
+            login: false,
+            accessToken: null,
+          })
+        );
+      });
   };
 
   const submitArticle = () => {
@@ -115,9 +123,11 @@ export default function AdminPage(props) {
 
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          {login.login == null || login.login == false ? (
+          {login.login === null || login.login === false ? (
             <div>
-              <h3 className={classes.title}>Unauthorized access. please login</h3>
+              <h3 className={classes.title}>
+                Your session has expired, please login again.
+              </h3>
             </div>
           ) : (
             <GridContainer justify="flex-start" direction="row">
@@ -229,7 +239,12 @@ export default function AdminPage(props) {
                   </GridItem>
 
                   <GridItem xs={12} sm={12} md={12} lg={12}>
-                    <p className={classes.articles}>INDOTAN PTISB</p>
+
+                    {myArticles.map(myArticle => 
+                      <Link to={`/article/${myArticle.id}`}>
+                        <p className={classes.articles}>{myArticle.title}</p>
+                      </Link>
+                    )}
                   </GridItem>
                 </GridContainer>
               </GridItem>

@@ -48,10 +48,7 @@ export default function HeaderLinks(props) {
               className={classes.dropdownLink}
             >
               PT Nusa Halmahera Minerals
-            </a>,
-            <Link to="/admin" className={classes.dropdownLink}>
-              Admin Page
-            </Link>
+            </a>
           ]}
         />
       </ListItem>
