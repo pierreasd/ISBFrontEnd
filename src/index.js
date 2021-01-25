@@ -18,7 +18,7 @@ var hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route path="/cheat-code" component={Components} />
+      <Route path="/components" component={Components} />
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
       <Route path="/admin" component={AdminPage} />

@@ -70,7 +70,15 @@ export default function SectionExamples() {
 
   const [articles, setArticles] = useState([]);
 
-  function getData() {
+  const truncateTitle = (title) => {
+    var string = title
+    if(string.length > 20){
+      string = string.substring(0, 19) + " ..."
+    }
+
+    return string
+  }
+  const getData = () => {
     return axios.get("http://localhost:8080/getArticles/")
     .then((res) =>  {
       setArticles(res.data.values);
@@ -95,9 +103,8 @@ export default function SectionExamples() {
             classes.imgFluid
           }
         /> */}
-        <Button color="gray" size="sm" simple>
-          {data.title}
-          {console.log(data.title.length)}
+        <Button color="gray" size="lg" simple fullWidth>
+          {truncateTitle(data.title)}
         </Button>
       </Link>
     </GridItem>
