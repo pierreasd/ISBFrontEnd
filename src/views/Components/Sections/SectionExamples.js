@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
+
 // @material-ui/icons
 
 // core components
@@ -70,7 +71,7 @@ export default function SectionExamples() {
   const [articles, setArticles] = useState([]);
 
   function getData() {
-    return axios.get("http://localhost:8080/getArticle/")
+    return axios.get("http://localhost:8080/getArticles/")
     .then((res) =>  {
       setArticles(res.data.values);
     });
@@ -83,7 +84,7 @@ export default function SectionExamples() {
   const listItem = articles.map((data) => (
     <GridItem xs={12} sm={4} md={4}>
       <Link to={`/article/${data.id}`}>
-        <img
+        {/* <img
           src={data.img}
           alt="..."
           className={
@@ -93,9 +94,10 @@ export default function SectionExamples() {
             " " +
             classes.imgFluid
           }
-        />
-        <Button color="gray" size="lg" simple>
+        /> */}
+        <Button color="gray" size="sm" simple>
           {data.title}
+          {console.log(data.title.length)}
         </Button>
       </Link>
     </GridItem>

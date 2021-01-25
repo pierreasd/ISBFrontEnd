@@ -19,6 +19,7 @@ import SectionCarousel from "views/Components/Sections/SectionCarousel"
 // other dependencies
 import axios from "axios";
 import parse from "html-react-parser/dist/html-react-parser"
+import moment from "moment"
 import ReactPlayer from "react-player"
 
 // images for mock data
@@ -76,7 +77,7 @@ export default function ArticlePage(props) {
                   <h3 className={classes.title}>{content.title} </h3>
                   <h6 className={classes.subtitle}>{content.author}</h6>
                   <h6 className={classes.subtitle}>
-                    {content.created_datetime}
+                    {moment(content.created_datetime).format("DD MMMM YYYY")}
                   </h6>
                 </div>
               </div>

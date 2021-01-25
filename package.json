@@ -14,7 +14,7 @@
     "classnames": "2.2.6",
     "history": "4.10.1",
     "html-react-parser": "^1.1.2",
-    "moment": "2.26.0",
+    "moment": "^2.29.1",
     "node-sass": "4.14.1",
     "nouislider": "14.5.0",
     "prop-types": "15.7.2",
