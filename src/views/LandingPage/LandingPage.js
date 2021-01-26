@@ -102,13 +102,11 @@ export default function LandingPage(props) {
 
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <ProductSection />
-
           <SectionCarousel img={pix}/>
-          
+          <ProductSection />
+          <TeamSection />
           <SectionExamples />
-          <SectionPills />
-          {/* <TeamSection /> */}
+          {/* <SectionPills /> */}
           {/* <WorkSection /> */}
         </div>
       </div>

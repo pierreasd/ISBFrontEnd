@@ -29,6 +29,7 @@ export default function TeamSection() {
     classes.imgRoundedCircle,
     classes.imgFluid
   );
+
   return (
     <div className={classes.section}>
       <h2 className={classes.title}>Here is our team</h2>
@@ -42,7 +43,9 @@ export default function TeamSection() {
               <h4 className={classes.cardTitle}>
                 Rafael Nitiyudo
                 <br />
-                <small className={classes.smallTitle}>Director of Operations</small>
+                <small className={classes.smallTitle}>
+                  Director of Operations
+                </small>
               </h4>
               <CardBody>
                 <p className={classes.description}>
@@ -52,7 +55,7 @@ export default function TeamSection() {
                   follow them outside the site.
                 </p>
               </CardBody>
-              <CardFooter className={classes.justifyCenter}>
+              {/* <CardFooter className={classes.justifyCenter}>
                 <Button
                   justIcon
                   color="transparent"
@@ -74,7 +77,7 @@ export default function TeamSection() {
                 >
                   <i className={classes.socials + " fab fa-facebook"} />
                 </Button>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -95,7 +98,7 @@ export default function TeamSection() {
                   follow them outside the site.
                 </p>
               </CardBody>
-              <CardFooter className={classes.justifyCenter}>
+              {/* <CardFooter className={classes.justifyCenter}>
                 <Button
                   justIcon
                   color="transparent"
@@ -110,7 +113,7 @@ export default function TeamSection() {
                 >
                   <i className={classes.socials + " fab fa-linkedin"} />
                 </Button>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -131,7 +134,7 @@ export default function TeamSection() {
                   follow them outside the site.
                 </p>
               </CardBody>
-              <CardFooter className={classes.justifyCenter}>
+              {/* <CardFooter className={classes.justifyCenter}>
                 <Button
                   justIcon
                   color="transparent"
@@ -153,7 +156,7 @@ export default function TeamSection() {
                 >
                   <i className={classes.socials + " fab fa-facebook"} />
                 </Button>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </GridItem>
         </GridContainer>

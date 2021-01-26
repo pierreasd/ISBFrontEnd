@@ -11,7 +11,8 @@ import Slide from "@material-ui/core/Slide";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
+// import Button from "components/CustomButtons/Button.js";
+import Card from "components/Card/Card.js";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/exampleStyle.js";
 import g1 from "assets/img/g1.JPG";
@@ -24,36 +25,36 @@ import g6 from "assets/img/g6.JPG";
 // other dependencies
 import axios from "axios";
 
-const articles = [
+const placeholder = [
   {
     id: "1",
     title: "Pak Robert Sedang Meeting",
-    img: g1
+    img: g1,
   },
   {
     id: "2",
     title: "Pak Robert Sedang Duduk",
-    img: g2
+    img: g2,
   },
   {
     id: "3",
     title: "Pak Ilham dengan Adan dan Ahmad",
-    img: g3
+    img: g3,
   },
   {
     id: "4",
     title: "Hutan",
-    img: g4
+    img: g4,
   },
   {
     id: "5",
     title: "Tim Rescue NHM",
-    img: g5
+    img: g5,
   },
   {
     id: "6",
     title: "Press Conference",
-    img: g6
+    img: g6,
   },
 ];
 
@@ -70,42 +71,33 @@ export default function SectionExamples() {
 
   const [articles, setArticles] = useState([]);
 
-  const truncateTitle = (title) => {
-    var string = title
-    if(string.length > 20){
-      string = string.substring(0, 19) + " ..."
-    }
-
-    return string
-  }
   const getData = () => {
-    return axios.get("http://localhost:8080/getArticles/")
-    .then((res) =>  {
+    return axios.get("http://localhost:8080/getArticles/").then((res) => {
       setArticles(res.data.values);
     });
-  }
+  };
 
   useEffect(() => {
     getData();
   }, []);
-  
+
   const listItem = articles.map((data) => (
     <GridItem xs={12} sm={4} md={4}>
       <Link to={`/article/${data.id}`}>
-        {/* <img
-          src={data.img}
-          alt="..."
-          className={
-            classes.imgRaised +
-            " " +
-            classes.imgRounded +
-            " " +
-            classes.imgFluid
-          }
-        /> */}
-        <Button color="gray" size="lg" simple fullWidth>
-          {truncateTitle(data.title)}
-        </Button>
+        <Card card plain>
+          <img
+            src={placeholder[0].img}
+            alt="..."
+            className={
+              classes.imgRaised +
+              " " +
+              classes.imgRounded +
+              " " +
+              classes.imgFluid
+            }
+          />
+          <h4 className={classes.description}>{data.title}</h4>
+        </Card>
       </Link>
     </GridItem>
   ));
