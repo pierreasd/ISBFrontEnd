@@ -1,73 +1,73 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Link, useHistory } from "react-router-dom"
 
 // nodejs library that concatenates classes
-import classNames from "classnames";
+import classNames from "classnames"
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles"
 // @material-ui/icons
 
 // Text editor
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { CKEditor } from "@ckeditor/ckeditor5-react"
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic"
 
 // core components
-import Header from "components/Header/Header.js";
-import Footer from "components/Footer/Footer.js";
-import Button from "components/CustomButtons/Button.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import HeaderLinks from "components/Header/HeaderLinks.js";
-import CustomInput from "components/CustomInput/CustomInput";
+import Header from "components/Header/Header.js"
+import Footer from "components/Footer/Footer.js"
+import Button from "components/CustomButtons/Button.js"
+import GridContainer from "components/Grid/GridContainer.js"
+import GridItem from "components/Grid/GridItem.js"
+import HeaderLinks from "components/Header/HeaderLinks.js"
+import CustomInput from "components/CustomInput/CustomInput"
 
-import styles from "assets/jss/material-kit-react/views/adminPage.js";
-import "./config.css";
+import styles from "assets/jss/material-kit-react/views/adminPage.js"
+import "./config.css"
 // import { DesktopWindows } from "@material-ui/icons"
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles)
 
 export default function AdminPage(props) {
-  const classes = useStyles();
-  const history = useHistory();
-  const { ...rest } = props;
+  const classes = useStyles()
+  const history = useHistory()
+  const { ...rest } = props
   const login =
     localStorage.getItem("login") == null
       ? null
-      : JSON.parse(localStorage.getItem("login"));
+      : JSON.parse(localStorage.getItem("login"))
 
   axios.defaults.headers.common = {
     Authorization: `Bearer ${login.accessToken}`,
-  };
+  }
 
-  const [myArticles, setMyArticles] = useState([]);
+  const [myArticles, setMyArticles] = useState([])
 
   const [imgUpload, setImgUpload] = useState([
     {
       img: "",
     },
-  ]);
+  ])
 
   const [articleForm, setArticleForm] = useState({
     files: "",
     title: "",
     body: "",
     author: login.author,
-  });
+  })
 
   const handleFormChange = (e) => {
     setArticleForm({
       ...articleForm,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const getArticle = () => {
     axios
       .get("http://localhost:8080/getMyArticles")
       .then((res) => {
-        if (res.status === 200) setMyArticles(res.data.values);
-        else window.location.reload();
+        if (res.status === 200) setMyArticles(res.data.values)
+        else window.location.reload()
       })
       .catch((res) => {
         localStorage.setItem(
@@ -76,32 +76,32 @@ export default function AdminPage(props) {
             login: false,
             accessToken: null,
           })
-        );
-      });
-  };
+        )
+      })
+  }
 
   const submitArticle = () => {
     axios.post(`http://localhost:8080/postArticle`, articleForm).then((res) => {
       if (res.data.status === 200) {
-        alert("Berhasil menambahkan artikel");
-        window.location.reload();
+        alert("Berhasil menambahkan artikel")
+        window.location.reload()
       }
-    });
-  };
+    })
+  }
 
   const logout = () => {
     axios
       .delete(`http://localhost:8080/users/logout`, {
         token: login.refreshToken,
       })
-      .then(history.push("/login-page"));
-  };
+      .then(history.push("/login-page"))
+  }
 
-  window.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0 })
 
   useEffect(() => {
-    getArticle();
-  }, []);
+    getArticle()
+  }, [])
 
   return (
     <div>
@@ -158,18 +158,20 @@ export default function AdminPage(props) {
                     <CKEditor
                       editor={ClassicEditor}
                       data={articleForm.body}
-                      onChange={(event, editor) => {
-                        const data = editor.getData();
+                      onChange={(res, editor) => {
+                        const data = editor.getData()
 
                         setArticleForm({
                           ...articleForm,
                           body: data,
-                        });
+                        })
+
+                        console.log(data)
                       }}
                       config={{
                         ckfinder: {
-                          uploadUrl: "http://localhost:8080/uploadImages",
-                        },
+                          uploadUrl: "http://localhost:8080/uploadImages"
+                        }
                       }}
                     />
                   </GridItem>
@@ -220,5 +222,5 @@ export default function AdminPage(props) {
       </div>
       <Footer />
     </div>
-  );
+  )
 }

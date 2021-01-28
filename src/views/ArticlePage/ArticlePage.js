@@ -71,10 +71,10 @@ export default function ArticlePage(props) {
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
           <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={6} lg={8}>
+            <GridItem xs={12} sm={8} md={8} lg={8}>
               <div className={classes.profile}>
                 <div className={classes.title}>
-                  <h3 className={classes.title}>{content.title} </h3>
+                  <h3 className={classes.title}>{content.title}</h3>
                   <h6 className={classes.subtitle}>{content.author}</h6>
                   <h6 className={classes.subtitle}>
                     {moment(content.created_datetime).format("DD MMMM YYYY")}
@@ -83,11 +83,7 @@ export default function ArticlePage(props) {
               </div>
             </GridItem>
 
-            <GridItem xs={12} sm={12} md={6} lg={12}>
-              {/* <SectionCarousel img={content.img} /> */}
-            </GridItem>
-
-            <GridItem xs={12} sm={12} md={6} lg={8}>
+            <GridItem xs={12} sm={8} md={8} lg={8}>
               <div className={classes.article}>
                 <p>{parse(content.body)}</p>
               </div>
