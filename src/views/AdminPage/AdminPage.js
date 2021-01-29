@@ -171,6 +171,11 @@ export default function AdminPage(props) {
                       config={{
                         ckfinder: {
                           uploadUrl: "http://localhost:8080/uploadImages"
+                        },
+                        image: {
+                          styles: [
+                              'alignLeft', 'alignCenter', 'alignRight'
+                          ],
                         }
                       }}
                     />
