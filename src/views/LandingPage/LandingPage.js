@@ -46,23 +46,23 @@ export default function LandingPage(props) {
   const pix = [
     {
       src: g1,
-      caption: "Ini Caption 1",
+      caption: "Meeting",
     },
     {
       src: g2,
-      caption: "Ini Caption 2",
+      caption: "Menjelaskan",
     },
     {
       src: g3,
-      caption: "Ini Caption 3",
+      caption: "Pak Ilham",
     },
     {
       src: g4,
-      caption: "Ini Caption 4",
+      caption: "Penambang Ilegal",
     },
     {
       src: g5,
-      caption: "Ini Caption 5",
+      caption: "Safety",
     },
     {
       src: g6,
@@ -104,8 +104,8 @@ export default function LandingPage(props) {
         <div className={classes.container}>
           <SectionCarousel img={pix}/>
           <ProductSection />
-          <TeamSection />
           <SectionExamples />
+          {/* <TeamSection /> */}
           {/* <SectionPills /> */}
           {/* <WorkSection /> */}
         </div>
