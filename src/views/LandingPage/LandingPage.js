@@ -66,7 +66,7 @@ export default function LandingPage(props) {
     },
     {
       src: g6,
-      caption: "Ini Caption 6",
+      caption: "Bertanya",
     },
   ]
   
