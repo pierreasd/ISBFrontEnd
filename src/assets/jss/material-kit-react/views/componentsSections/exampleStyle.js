@@ -4,7 +4,7 @@ import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 
 const exampleStyle = {
   section: {
-    paddingBottom: "70px"
+    padding: "70px 0"
   },
   container: {
     ...containerFluid,
