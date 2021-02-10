@@ -42,7 +42,7 @@ export default function ArticlePage(props) {
   });
 
   function getData() {
-    return axios.get("http://localhost:8080/getArticleDetails/" + `${params.id}`)
+    return axios.get(`http://${process.env.REACT_APP_API_URL}/getArticleDetails/` + `${params.id}`)
     .then((res) =>  {
       setContent(res.data.values[0]);
     }) 

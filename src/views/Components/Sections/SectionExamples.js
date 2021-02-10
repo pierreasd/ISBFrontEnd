@@ -72,7 +72,7 @@ export default function SectionExamples() {
   const [articles, setArticles] = useState([]);
 
   const getData = () => {
-    return axios.get("http://localhost:8080/getArticles/").then((res) => {
+    return axios.get(`http://${process.env.REACT_APP_API_URL}/getArticles/`).then((res) => {
       setArticles(res.data.values);
     });
   };
@@ -110,7 +110,7 @@ export default function SectionExamples() {
             <h2 className={classes.title}>Latest Articles</h2>
           </GridItem>
         </GridContainer>
-
+        <p>{console.log(process.env)}</p>
         <GridContainer justify="flex-start">{listItem}</GridContainer>
       </div>
     </div>

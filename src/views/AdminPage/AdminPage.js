@@ -64,7 +64,7 @@ export default function AdminPage(props) {
 
   const getArticle = () => {
     axios
-      .get("http://localhost:8080/getMyArticles")
+      .get(`http://${process.env.REACT_APP_API_URL}/getMyArticles`)
       .then((res) => {
         if (res.status === 200) setMyArticles(res.data.values)
         else window.location.reload()
@@ -81,7 +81,7 @@ export default function AdminPage(props) {
   }
 
   const submitArticle = () => {
-    axios.post(`http://localhost:8080/postArticle`, articleForm).then((res) => {
+    axios.post(`http://${process.env.REACT_APP_API_URL}/postArticle`, articleForm).then((res) => {
       if (res.data.status === 200) {
         alert("Berhasil menambahkan artikel")
         window.location.reload()
@@ -91,7 +91,7 @@ export default function AdminPage(props) {
 
   const logout = () => {
     axios
-      .delete(`http://localhost:8080/users/logout`, {
+      .delete(`http://${process.env.REACT_APP_API_URL}/users/logout`, {
         token: login.refreshToken,
       })
       .then(history.push("/login-page"))

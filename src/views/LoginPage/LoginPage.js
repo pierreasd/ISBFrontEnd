@@ -53,7 +53,7 @@ export default function LoginPage(props) {
   const submitLogin = () => {
     try {
       axios
-        .post(`http://localhost:8080/users/login/`, loginForm)
+        .post(`http://${process.env.REACT_APP_API_URL}/users/login/`, loginForm)
         .then((res) => {
           if (res.data.status === 200) {
             localStorage.setItem(
