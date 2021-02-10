@@ -170,7 +170,7 @@ export default function AdminPage(props) {
                       }}
                       config={{
                         ckfinder: {
-                          uploadUrl: "http://localhost:8080/uploadImages"
+                          uploadUrl: `http://${process.env.REACT_APP_API_URL}/uploadImages`
                         },
                         image: {
                           styles: [
