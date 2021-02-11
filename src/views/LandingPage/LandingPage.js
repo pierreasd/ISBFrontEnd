@@ -87,7 +87,7 @@ export default function LandingPage(props) {
       <Parallax filter image={require("assets/img/gold.png")}>
         <div className={classes.container}>
           <GridContainer>
-            <Hidden smDown>
+            <Hidden mdDown>
               <GridItem xs={12} sm={12} md={6}>
                 <h1 className={classes.title}>PT Indotan Sumbawa Bangkit</h1>
                 <h4>
@@ -97,7 +97,7 @@ export default function LandingPage(props) {
                 </h4>
               </GridItem>
             </Hidden>
-            <Hidden only={["md", "lg"]}>
+            <Hidden lgUp>
               <GridItem xs={12} sm={12} md={6}>
                 <h2 className={classes.title}>PT Indotan Sumbawa Bangkit</h2>
                 <h4>
@@ -124,7 +124,7 @@ export default function LandingPage(props) {
         </div>
       </Hidden>
 
-      <Hidden only={["md", "lg"]}>
+      <Hidden mdUp>
         <div className={classNames(classes.main, classes.smRaised)}>
           <div className={classes.container}>
             <SectionCarousel img={pix} />

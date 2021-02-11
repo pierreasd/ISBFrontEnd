@@ -3,7 +3,6 @@ const cardStyle = {
     border: "0",
     marginBottom: "30px",
     marginTop: "30px",
-    borderRadius: "6px",
     color: "rgba(0, 0, 0, 0.87)",
     background: "#fff",
     width: "100%",
@@ -16,7 +15,7 @@ const cardStyle = {
     wordWrap: "break-word",
     fontSize: ".875rem",
     transition: "all 300ms linear",
-    borderRadius: "5px !important"
+    borderRadius: "2px !important"
   },
   cardPlain: {
     background: "transparent",
