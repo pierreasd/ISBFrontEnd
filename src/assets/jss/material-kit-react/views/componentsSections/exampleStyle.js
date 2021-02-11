@@ -23,7 +23,7 @@ const exampleStyle = {
     textDecoration: "none"
   },
   description: {
-    color: "#999"
+    color: "#777"
   }
 };
 

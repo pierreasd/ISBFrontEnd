@@ -116,6 +116,12 @@ const headerStyle = {
     boxShadow:
       "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
   },
+  gold: {
+    color: "#404040",
+    backgroundColor: "#D4AF37 !important",
+    boxShadow:
+      "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(33, 33, 33, 0.46)"
+  },
   white: {
     border: "0",
     padding: "0.625rem 0",
