@@ -53,6 +53,7 @@ export default function Header(props) {
         .classList.remove(classes[changeColorOnScroll.color]);
     }
   };
+  
   const { color, rightLinks, leftLinks, brand, fixed, absolute } = props;
   const appBarClasses = classNames({
     [classes.appBar]: true,
@@ -60,6 +61,7 @@ export default function Header(props) {
     [classes.absolute]: absolute,
     [classes.fixed]: fixed
   });
+
   const brandComponent = <Button className={classes.title} href="/">{brand}</Button>;
   return (
     <AppBar className={appBarClasses}>
