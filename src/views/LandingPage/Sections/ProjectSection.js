@@ -19,7 +19,7 @@ export default function ProjectSection() {
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={12} lg={12}>
+        <GridItem xs={12} sm={12} md={12} lg={10}>
           <Hidden xsDown>
             <h2 className={classes.title}>Our Projects</h2>
           </Hidden>

@@ -107,7 +107,7 @@ export default function SectionExamples() {
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={12} lg={12}>
+        <GridItem xs={12} sm={12} md={12} lg={10}>
           <h2 className={classes.title}>Latest Articles</h2>
         </GridItem>
       </GridContainer>
