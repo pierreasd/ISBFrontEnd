@@ -84,7 +84,7 @@ export default function SectionExamples() {
   }, []);
 
   const listItem = articles.map((data) => (
-    <GridItem xs={4} sm={4} md={4} lg={4}>
+    <GridItem xs={6} sm={6} md={3} lg={3}>
       <Link to={`/article/${data.id}`}>
         <Card card plain>
           <img
@@ -107,12 +107,12 @@ export default function SectionExamples() {
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={8} lg={10}>
+        <GridItem xs={12} sm={12} md={12} lg={12}>
           <h2 className={classes.title}>Latest Articles</h2>
         </GridItem>
       </GridContainer>
 
-      <GridContainer justify="center">
+      <GridContainer justify="center" spacing={2}>
         {listItem}
       </GridContainer>
     </div>
