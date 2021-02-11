@@ -11,11 +11,10 @@ import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import Button from "components/CustomButtons/Button.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
-import ListItem from "@material-ui/core/ListItem";
 
+// assets
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import logo from "assets/img/logo.png";
 
@@ -33,6 +32,7 @@ import g3 from "assets/img/g3.JPG";
 import g4 from "assets/img/g4.JPG";
 import g5 from "assets/img/g5.JPG";
 import g6 from "assets/img/g6.JPG";
+import { Hidden } from "@material-ui/core";
 
 const dashboardRoutes = [];
 
@@ -41,7 +41,7 @@ const useStyles = makeStyles(styles);
 export default function LandingPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
-  window.scrollTo({top: 0});
+  window.scrollTo({ top: 0 });
 
   const pix = [
     {
@@ -68,13 +68,10 @@ export default function LandingPage(props) {
       src: g6,
       caption: "Bertanya",
     },
-  ]
-  
+  ];
+
   return (
     <div>
-      {/* <ListItem className={classes.listItem}>
-        <img src={logo} height="40px"></img>
-      </ListItem> */}
       <Header
         color="transparent"
         routes={dashboardRoutes}
@@ -83,33 +80,62 @@ export default function LandingPage(props) {
         fixed
         changeColorOnScroll={{
           height: 400,
-          color: "dark"
+          color: "dark",
         }}
         {...rest}
       />
       <Parallax filter image={require("assets/img/gold.png")}>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>PT Indotan Sumbawa Bangkit</h1>
-              <h4>
-                PT. Indotan Sumbawa Bangkit holds an IUP Exploration covering the Taliwang Gold Project which is a prospective gold, silver and copper concession in Sumbawa, Indonesia.
-              </h4>
-            </GridItem>
+            <Hidden smDown>
+              <GridItem xs={12} sm={12} md={6}>
+                <h1 className={classes.title}>PT Indotan Sumbawa Bangkit</h1>
+                <h4>
+                  PT. Indotan Sumbawa Bangkit holds an IUP Exploration covering
+                  the Taliwang Gold Project which is a prospective gold, silver
+                  and copper concession in Sumbawa, Indonesia.
+                </h4>
+              </GridItem>
+            </Hidden>
+            <Hidden only={["md", "lg"]}>
+              <GridItem xs={12} sm={12} md={6}>
+                <h2 className={classes.title}>PT Indotan Sumbawa Bangkit</h2>
+                <h4>
+                  PT. Indotan Sumbawa Bangkit holds an IUP Exploration covering
+                  the Taliwang Gold Project which is a prospective gold, silver
+                  and copper concession in Sumbawa, Indonesia.
+                </h4>
+              </GridItem>
+            </Hidden>
           </GridContainer>
         </div>
       </Parallax>
 
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          <SectionCarousel img={pix}/>
-          <ProductSection />
-          <SectionExamples />
-          {/* <TeamSection /> */}
-          {/* <SectionPills /> */}
-          {/* <WorkSection /> */}
+      <Hidden smDown>
+        <div className={classNames(classes.main, classes.mainRaised)}>
+          <div className={classes.container}>
+            <SectionCarousel img={pix} />
+            <ProductSection />
+            <SectionExamples />
+            {/* <TeamSection /> */}
+            {/* <SectionPills /> */}
+            {/* <WorkSection /> */}
+          </div>
         </div>
-      </div>
+      </Hidden>
+
+      <Hidden only={["md", "lg"]}>
+        <div className={classNames(classes.main)}>
+          <div className={classes.container}>
+            <SectionCarousel img={pix} />
+            <ProductSection />
+            <SectionExamples />
+            {/* <TeamSection /> */}
+            {/* <SectionPills /> */}
+            {/* <WorkSection /> */}
+          </div>
+        </div>
+      </Hidden>
 
       <Footer />
     </div>
