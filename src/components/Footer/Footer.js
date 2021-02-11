@@ -81,6 +81,18 @@ export default function Footer(props) {
           </a>{" "}
           for a better web.
         </div> */}
+        <div className={classes.right}>
+          &copy; {1900 + new Date().getYear()} , made with{" "}
+          <Favorite className={classes.icon} /> by NHM IT and supported by{" "}
+          <a
+            href="https://www.creative-tim.com?ref=mkr-footer"
+            className={aClasses}
+            target="_blank"
+          >
+            Creative Tim
+          </a>{"."}
+        </div>
+        
       </div>
     </footer>
   );

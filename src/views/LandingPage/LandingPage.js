@@ -125,7 +125,7 @@ export default function LandingPage(props) {
       </Hidden>
 
       <Hidden only={["md", "lg"]}>
-        <div className={classNames(classes.main)}>
+        <div className={classNames(classes.main, classes.smRaised)}>
           <div className={classes.container}>
             <SectionCarousel img={pix} />
             <ProductSection />
