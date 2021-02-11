@@ -20,6 +20,9 @@ import parse from "html-react-parser/dist/html-react-parser";
 import moment from "moment";
 import { Hidden } from "@material-ui/core";
 
+// custom css  
+import "./config.css"
+
 const useStyles = makeStyles(styles);
 
 export default function ArticlePage(props) {
@@ -98,7 +101,7 @@ export default function ArticlePage(props) {
         <div className={classNames(classes.main, classes.smRaised)}>
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={8} md={8} lg={8}>
+              <GridItem xs={12} sm={12} md={10} lg={10}>
                 <div className={classes.profile}>
                   <div className={classes.title}>
                     <h3 className={classes.title}>{content.title}</h3>
@@ -110,7 +113,7 @@ export default function ArticlePage(props) {
                 </div>
               </GridItem>
 
-              <GridItem xs={12} sm={8} md={8} lg={8}>
+              <GridItem xs={12} sm={12} md={10} lg={10}>
                 <div className={classes.article}>
                   <p>{parse(content.body)}</p>
                 </div>

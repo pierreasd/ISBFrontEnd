@@ -1,0 +1,12 @@
+img{
+    max-width: 100%;
+}
+
+figure{
+    align-items: center;
+}
+
+p{
+    white-space: normal;
+    word-break: break-word;
+}
