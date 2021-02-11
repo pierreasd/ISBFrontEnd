@@ -72,9 +72,11 @@ export default function SectionExamples() {
   const [articles, setArticles] = useState([]);
 
   const getData = () => {
-    return axios.get(`http://${process.env.REACT_APP_API_URL}/getArticles/`).then((res) => {
-      setArticles(res.data.values);
-    });
+    return axios
+      .get(`http://${process.env.REACT_APP_API_URL}/getArticles/`)
+      .then((res) => {
+        setArticles(res.data.values);
+      });
   };
 
   useEffect(() => {
@@ -82,7 +84,7 @@ export default function SectionExamples() {
   }, []);
 
   const listItem = articles.map((data) => (
-    <GridItem xs={12} sm={4} md={4}>
+    <GridItem xs={4} sm={4} md={4} lg={4}>
       <Link to={`/article/${data.id}`}>
         <Card card plain>
           <img
@@ -104,15 +106,15 @@ export default function SectionExamples() {
 
   return (
     <div className={classes.section}>
-      <div className={classes.container}>
-        <GridContainer justify="center">
-          <GridItem xs={12} sm={12} md={8}>
-            <h2 className={classes.title}>Latest Articles</h2>
-          </GridItem>
-        </GridContainer>
-        <p>{console.log(process.env)}</p>
-        <GridContainer justify="flex-start">{listItem}</GridContainer>
-      </div>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={8} lg={10}>
+          <h2 className={classes.title}>Latest Articles</h2>
+        </GridItem>
+      </GridContainer>
+
+      <GridContainer justify="center">
+        {listItem}
+      </GridContainer>
     </div>
   );
 }

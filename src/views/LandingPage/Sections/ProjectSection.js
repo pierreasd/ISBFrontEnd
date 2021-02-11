@@ -8,7 +8,6 @@ import pic from "assets/img/proyek.jpg";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/projectStyle.js";
 import { Hidden } from "@material-ui/core";
@@ -20,7 +19,7 @@ export default function ProjectSection() {
   return (
     <div className={classes.section}>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={8} lg={10}>
+        <GridItem xs={12} sm={12} md={12} lg={12}>
           <Hidden xsDown>
             <h2 className={classes.title}>Our Projects</h2>
           </Hidden>

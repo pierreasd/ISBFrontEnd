@@ -4,7 +4,8 @@ import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 
 const exampleStyle = {
   section: {
-    padding: "70px 0"
+    padding: "30px 0",
+    textAlign: "center"
   },
   container: {
     ...containerFluid,
@@ -16,7 +17,7 @@ const exampleStyle = {
   },
   title: {
     ...title,
-    marginBottom: "1rem",
+    marginBottom: "10px",
     marginTop: "30px",
     minHeight: "32px",
     textDecoration: "none"
