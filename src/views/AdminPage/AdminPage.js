@@ -33,7 +33,7 @@ export default function AdminPage(props) {
   const { ...rest } = props
   const login =
     localStorage.getItem("login") == null
-      ? null
+      ? ''
       : JSON.parse(localStorage.getItem("login"))
 
   axios.defaults.headers.common = {
@@ -108,7 +108,7 @@ export default function AdminPage(props) {
       <Header
         color="dark"
         brand={
-          login.login ? (
+          login.login || login == '' ? (
             <div>
               Halo, {login.author}{" "}
               <Link onClick={() => logout()}>(logout)</Link>

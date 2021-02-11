@@ -20,11 +20,7 @@ import SectionCarousel from "views/Components/Sections/SectionCarousel"
 import axios from "axios";
 import parse from "html-react-parser/dist/html-react-parser"
 import moment from "moment"
-import ReactPlayer from "react-player"
-
-// images for mock data
-import g1 from "assets/img/g1.JPG"
-import g2 from "assets/img/g2.JPG"
+import { Link } from "@material-ui/core"
 
 const useStyles = makeStyles(styles)
 
@@ -56,7 +52,7 @@ export default function ArticlePage(props) {
     <div>
       <Header
         color="transparent"
-        brand="PT INDOTAN SUMBAWA BANGKIT"
+        brand = "PT Indotan Sumbawa Bangkit"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
