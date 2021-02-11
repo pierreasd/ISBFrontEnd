@@ -16,10 +16,10 @@ import Parallax from "components/Parallax/Parallax.js";
 
 // assets
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
-import logo from "assets/img/logo.png";
 
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.js";
+import ProjectSection from "./Sections/ProjectSection.js";
 import TeamSection from "./Sections/TeamSection.js";
 import WorkSection from "./Sections/WorkSection.js";
 import SectionCarousel from "views/Components/Sections/SectionCarousel.js";
@@ -114,8 +114,9 @@ export default function LandingPage(props) {
       <Hidden smDown>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-            <SectionCarousel img={pix} />
+            {/* <SectionCarousel img={pix} /> */}
             <ProductSection />
+            <ProjectSection />
             <SectionExamples />
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}
@@ -127,8 +128,9 @@ export default function LandingPage(props) {
       <Hidden mdUp>
         <div className={classNames(classes.main, classes.smRaised)}>
           <div className={classes.container}>
-            <SectionCarousel img={pix} />
+            {/* <SectionCarousel img={pix} /> */}
             <ProductSection />
+            <ProjectSection />
             <SectionExamples />
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}

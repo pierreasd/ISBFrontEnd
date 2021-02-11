@@ -1,6 +1,6 @@
 import { title } from "assets/jss/material-kit-react.js";
 
-const productStyle = {
+const projectStyle = {
   section: {
     padding: "30px 0",
     textAlign: "center"
@@ -15,11 +15,11 @@ const productStyle = {
   description: {
     color: "#999"
   },
-  rock: {
+  pic: {
     margin: "20px 0",
     borderRadius: "5px !important",
     maxWidth: "100%",
   }
 };
 
-export default productStyle;
+export default projectStyle;

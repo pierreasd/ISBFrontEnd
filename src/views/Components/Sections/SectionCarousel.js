@@ -28,20 +28,11 @@ export default function SectionCarousel(props) {
 
   const { img } = props;
 
-  // const listItem = data.map((dummy) => (
-  //   <div>
-  //     <img src={dummy.img} alt="First slide" className="slick-image" />
-  //     <div className="slick-caption">
-  //       <h4>{dummy.title}</h4>
-  //     </div>
-  //   </div>
-  // ))
-
   const listImg = img.map((data) => (
     <div>
       <img src={data.src} alt="First slide" className="slick-image" />
       <div className="slick-caption">
-        <h4>{data.caption}</h4>
+        <h4>{data.caption}</h4>{console.log(data.src)}
       </div>
     </div>
   ));
