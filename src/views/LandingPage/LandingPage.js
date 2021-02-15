@@ -1,8 +1,10 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import { Hidden } from "@material-ui/core";
 
 // @material-ui/icons
 
@@ -16,6 +18,7 @@ import Parallax from "components/Parallax/Parallax.js";
 
 // assets
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
+import Fade from "react-reveal/Fade";
 
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.js";
@@ -32,7 +35,6 @@ import g3 from "assets/img/g3.JPG";
 import g4 from "assets/img/g4.JPG";
 import g5 from "assets/img/g5.JPG";
 import g6 from "assets/img/g6.JPG";
-import { Hidden } from "@material-ui/core";
 
 const dashboardRoutes = [];
 
@@ -86,28 +88,30 @@ export default function LandingPage(props) {
       />
       <Parallax filter image={require("assets/img/gold.png")}>
         <div className={classes.container}>
-          <GridContainer>
-            <Hidden mdDown>
-              <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classes.title}>PT Indotan Sumbawa Bangkit</h1>
-                <h4>
-                  PT. Indotan Sumbawa Bangkit holds an IUP Exploration covering
-                  the Taliwang Gold Project which is a prospective gold, silver
-                  and copper concession in Sumbawa, Indonesia.
-                </h4>
-              </GridItem>
-            </Hidden>
-            <Hidden lgUp>
-              <GridItem xs={12} sm={12} md={6}>
-                <h2 className={classes.title}>PT Indotan Sumbawa Bangkit</h2>
-                <h4>
-                  PT. Indotan Sumbawa Bangkit holds an IUP Exploration covering
-                  the Taliwang Gold Project which is a prospective gold, silver
-                  and copper concession in Sumbawa, Indonesia.
-                </h4>
-              </GridItem>
-            </Hidden>
-          </GridContainer>
+          <Fade bottom>
+            <GridContainer>
+              <Hidden mdDown>
+                <GridItem xs={12} sm={12} md={6}>
+                  <h1 className={classes.title}>PT Indotan Sumbawa Bangkit</h1>
+                  <h4>
+                    PT. Indotan Sumbawa Bangkit holds an IUP Exploration
+                    covering the Taliwang Gold Project which is a prospective
+                    gold, silver and copper concession in Sumbawa, Indonesia.
+                  </h4>
+                </GridItem>
+              </Hidden>
+              <Hidden lgUp>
+                <GridItem xs={12} sm={12} md={6}>
+                  <h2 className={classes.title}>PT Indotan Sumbawa Bangkit</h2>
+                  <h4>
+                    PT. Indotan Sumbawa Bangkit holds an IUP Exploration
+                    covering the Taliwang Gold Project which is a prospective
+                    gold, silver and copper concession in Sumbawa, Indonesia.
+                  </h4>
+                </GridItem>
+              </Hidden>
+            </GridContainer>
+          </Fade>
         </div>
       </Parallax>
 
