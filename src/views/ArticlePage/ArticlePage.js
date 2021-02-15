@@ -20,8 +20,8 @@ import parse from "html-react-parser/dist/html-react-parser";
 import moment from "moment";
 import { Hidden } from "@material-ui/core";
 
-// custom css  
-import "./config.css"
+// custom css for article after render
+import "./article.css"
 
 const useStyles = makeStyles(styles);
 

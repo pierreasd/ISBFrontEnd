@@ -1,6 +1,7 @@
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import { Hidden } from "@material-ui/core";
 
 // images
 import pic from "assets/img/proyek.jpg";
@@ -9,8 +10,9 @@ import pic from "assets/img/proyek.jpg";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 
+// custom css and other dependencies
+import Fade from "react-reveal/Fade";
 import styles from "assets/jss/material-kit-react/views/landingPageSections/projectStyle.js";
-import { Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -18,60 +20,62 @@ export default function ProjectSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={12} lg={10}>
-          <Hidden xsDown>
-            <h2 className={classes.title}>Our Projects</h2>
-          </Hidden>
-          <Hidden smUp>
-            <h3 className={classes.title}>Our Projects</h3>
-          </Hidden>
+      <Fade bottom>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={12} lg={10}>
+            <Hidden xsDown>
+              <h2 className={classes.title}>Our Projects</h2>
+            </Hidden>
+            <Hidden smUp>
+              <h3 className={classes.title}>Our Projects</h3>
+            </Hidden>
 
-          <div className={classes.description}>
-            <img src={pic} className={classes.pic} />
-          </div>
+            <div className={classes.description}>
+              <img src={pic} className={classes.pic} />
+            </div>
 
-          <div className={classes.description}>
-            <h5>
-              <strong>TALIWANG PROPERTY</strong>
-            </h5>
-            <h5>
-              Adjacent to Newmont’s world-class Batu Hijau Cu-Au mine (17.2 Moz
-              Au/14.1Blb Cu). 24,772 hectares highly prospective for Au, Ag, Cu
-              with three main prospects. Near-surface porphyry Cu-Au with
-              surface high-sulphidation epithermal signature.
-            </h5>
-          </div>
+            <div className={classes.description}>
+              <h5>
+                <strong>TALIWANG PROPERTY</strong>
+              </h5>
+              <h5>
+                Adjacent to Newmont’s world-class Batu Hijau Cu-Au mine (17.2
+                Moz Au/14.1Blb Cu). 24,772 hectares highly prospective for Au,
+                Ag, Cu with three main prospects. Near-surface porphyry Cu-Au
+                with surface high-sulphidation epithermal signature.
+              </h5>
+            </div>
 
-          <div className={classes.description}>
-            <h5>
-              <strong>TALIWANG GEOLOGY</strong>
-            </h5>
-            <h5>
-              The Taliwang project is located on the island of Sumbawa, which is
-              located immediately to the east of Lombok Island in the central
-              part of Indonesia’s tectonically active, east-west trending
-              Sunda-Banda magmatic arc. The geology of Sumbawa is characterized
-              by an island arc-type volcano-sedimentary succession of Late
-              Oligocene to Quaternary age. The southern parts of Sumbawa Island
-              are overlain by Late Oligocene to Middle Miocene, calc-alkaline to
-              weakly alkaline andesitic volcanic and interbedded volcaniclastic
-              rocks, associated intermediate intrusions and shallow marine
-              sedimentary rocks and limestones (Garwin, 2002). The geology of
-              the Taliwang property presents three main structural grains,
-              northwest, north-south and north-east trends, relating to copper
-              and gold mineralization in the region. The NNE to NE trends form
-              the mineralized corridors hosting porphyry Cu-Au mineralization,
-              whereas late-stage epithermal veins and post mineral dykes are
-              developed along the northwest and north-south trending faults. The
-              Maps page contains three maps showing details of the overall
-              geology of the Taliwang property, namely: West Sumbawa Structural
-              Elements map; Sumbawa – Taliwang SIPP Geochemical Anomalies map;
-              and Sumbawa – Taliwang SIPP Geology map.
-            </h5>
-          </div>
+            <div className={classes.description}>
+              <h5>
+                <strong>TALIWANG GEOLOGY</strong>
+              </h5>
+              <h5>
+                The Taliwang project is located on the island of Sumbawa, which
+                is located immediately to the east of Lombok Island in the
+                central part of Indonesia’s tectonically active, east-west
+                trending Sunda-Banda magmatic arc. The geology of Sumbawa is
+                characterized by an island arc-type volcano-sedimentary
+                succession of Late Oligocene to Quaternary age. The southern
+                parts of Sumbawa Island are overlain by Late Oligocene to Middle
+                Miocene, calc-alkaline to weakly alkaline andesitic volcanic and
+                interbedded volcaniclastic rocks, associated intermediate
+                intrusions and shallow marine sedimentary rocks and limestones
+                (Garwin, 2002). The geology of the Taliwang property presents
+                three main structural grains, northwest, north-south and
+                north-east trends, relating to copper and gold mineralization in
+                the region. The NNE to NE trends form the mineralized corridors
+                hosting porphyry Cu-Au mineralization, whereas late-stage
+                epithermal veins and post mineral dykes are developed along the
+                northwest and north-south trending faults. The Maps page
+                contains three maps showing details of the overall geology of
+                the Taliwang property, namely: West Sumbawa Structural Elements
+                map; Sumbawa – Taliwang SIPP Geochemical Anomalies map; and
+                Sumbawa – Taliwang SIPP Geology map.
+              </h5>
+            </div>
 
-          {/* <h5 className={classes.description}>
+            {/* <h5 className={classes.description}>
             LEMONGA PROSPECT GEOLOGY The Lemonga prospect is a low-sulphidation
             epithermal system over which surface mapping by Southern Arc and
             previous operators confirmed hydrothermal argillic alteration within
@@ -141,8 +145,9 @@ export default function ProjectSection() {
             chalcopyrite-malachite, sphalerite/galena) and anhydrite(?) coatings
             along fracture and joint planes.
           </h5> */}
-        </GridItem>
-      </GridContainer>
+          </GridItem>
+        </GridContainer>
+      </Fade>
     </div>
   );
 }
