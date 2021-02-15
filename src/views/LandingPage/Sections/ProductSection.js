@@ -28,7 +28,7 @@ export default function ProductSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <Fade bottom>
+      <Fade bottom cascade>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={12} lg={10}>
             <Hidden xsDown>

@@ -88,7 +88,7 @@ export default function LandingPage(props) {
       />
       <Parallax filter image={require("assets/img/gold.png")}>
         <div className={classes.container}>
-          <Fade bottom>
+          <Fade bottom cascade>
             <GridContainer>
               <Hidden mdDown>
                 <GridItem xs={12} sm={12} md={6}>
