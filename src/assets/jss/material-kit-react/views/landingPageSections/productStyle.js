@@ -17,7 +17,7 @@ const productStyle = {
   },
   rock: {
     margin: "20px 0",
-    borderRadius: "5px !important",
+    borderRadius: "6px !important",
     maxWidth: "100%",
   }
 };
