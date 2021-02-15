@@ -6,13 +6,14 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
 
-// @material-ui/icons
-
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 // import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
+
+// for animation
+import Fade from "react-reveal/Fade";
 
 import styles from "assets/jss/material-kit-react/views/componentsSections/exampleStyle.js";
 import g1 from "assets/img/g1.JPG";
@@ -106,15 +107,17 @@ export default function SectionExamples() {
 
   return (
     <div className={classes.section}>
-      <GridContainer justify="center">
-        <GridItem xs={12} sm={12} md={12} lg={10}>
-          <h2 className={classes.title}>Latest Articles</h2>
-        </GridItem>
-      </GridContainer>
+      <Fade bottom cascade>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={12} lg={10}>
+            <h2 className={classes.title}>Latest Articles</h2>
+          </GridItem>
+        </GridContainer>
 
-      <GridContainer justify="center" spacing={2}>
-        {listItem}
-      </GridContainer>
+        <GridContainer justify="center" spacing={2}>
+          {listItem}
+        </GridContainer>
+      </Fade>
     </div>
   );
 }
