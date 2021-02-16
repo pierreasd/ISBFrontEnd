@@ -20,9 +20,9 @@ export default function ProjectSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <Fade bottom cascade>
-        <GridContainer justify="center">
-          <GridItem xs={12} sm={12} md={12} lg={10}>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={12} lg={10}>
+          <Fade bottom cascade>
             <Hidden xsDown>
               <h2 className={classes.title}>Our Projects</h2>
             </Hidden>
@@ -145,9 +145,9 @@ export default function ProjectSection() {
             chalcopyrite-malachite, sphalerite/galena) and anhydrite(?) coatings
             along fracture and joint planes.
           </h5> */}
-          </GridItem>
-        </GridContainer>
-      </Fade>
+          </Fade>
+        </GridItem>
+      </GridContainer>
     </div>
   );
 }

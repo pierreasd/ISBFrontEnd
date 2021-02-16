@@ -28,9 +28,9 @@ export default function ProductSection() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
-      <Fade bottom cascade>
-        <GridContainer justify="center">
-          <GridItem xs={12} sm={12} md={12} lg={10}>
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={12} lg={10}>
+          <Fade bottom cascade>
             <Hidden xsDown>
               <h2 className={classes.title}>About Us</h2>
             </Hidden>
@@ -58,10 +58,11 @@ export default function ProductSection() {
               concentrated on the Lemonga gold-silver epithermal vein prospect
               which shows substantial potential exploration upside.
             </h5>
-          </GridItem>
-        </GridContainer>
+          </Fade>
+        </GridItem>
+      </GridContainer>
 
-        {/* <div>
+      {/* <div>
         <GridContainer>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
@@ -92,7 +93,6 @@ export default function ProductSection() {
           </GridItem>
         </GridContainer>
       </div> */}
-      </Fade>
     </div>
   );
 }
