@@ -78,6 +78,7 @@ export default function AdminPage(props) {
           })
         )
       })
+
   }
 
   const submitArticle = () => {
@@ -95,6 +96,8 @@ export default function AdminPage(props) {
         token: login.refreshToken,
       })
       .then(history.push("/login-page"))
+
+      localStorage.setItem("login", null)
   }
 
   window.scrollTo({ top: 0 })
@@ -165,8 +168,6 @@ export default function AdminPage(props) {
                           ...articleForm,
                           body: data,
                         })
-
-                        console.log(data)
                       }}
                       config={{
                         ckfinder: {
@@ -205,7 +206,7 @@ export default function AdminPage(props) {
                   </GridItem>
 
                   <GridItem xs={12} sm={12} md={12} lg={12}>
-                    {myArticles.length === 0 ? (
+                    {myArticles === undefined || myArticles.length === 0 ? (
                       <p className={classes.articles}>
                         Anda belum memiliki artikel.
                       </p>
