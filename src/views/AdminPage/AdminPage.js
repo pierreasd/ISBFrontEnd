@@ -78,7 +78,6 @@ export default function AdminPage(props) {
           })
         )
       })
-
   }
 
   const submitArticle = () => {
