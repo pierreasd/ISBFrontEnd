@@ -32,9 +32,7 @@ export default function ProjectSection() {
 
             <div className={classes.description}>
               <img src={pic} className={classes.pic} />
-            </div>
-
-            <div className={classes.description}>
+              
               <h5>
                 <strong>TALIWANG PROPERTY</strong>
               </h5>
@@ -44,9 +42,7 @@ export default function ProjectSection() {
                 Ag, Cu with three main prospects. Near-surface porphyry Cu-Au
                 with surface high-sulphidation epithermal signature.
               </h5>
-            </div>
-
-            <div className={classes.description}>
+              
               <h5>
                 <strong>TALIWANG GEOLOGY</strong>
               </h5>

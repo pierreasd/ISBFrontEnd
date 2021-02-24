@@ -13,7 +13,8 @@ const projectStyle = {
     textDecoration: "none"
   },
   description: {
-    color: "#777"
+    color: "#777",
+    marginBottom: "10px"
   },
   pic: {
     margin: "20px 0",
