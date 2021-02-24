@@ -20,6 +20,7 @@ const projectStyle = {
     margin: "20px 0",
     borderRadius: "6px !important",
     maxWidth: "100%",
+    maxHeight: "60vh"
   }
 };
 
