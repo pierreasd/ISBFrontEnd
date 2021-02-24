@@ -37,18 +37,22 @@ export default function HeaderLinks(props) {
             className: classes.navLink,
             color: "transparent"
           }}
-          buttonIcon={Apps}
+          // buttonIcon={Apps}
           dropdownList={[
-            // <Link to="/" className={classes.dropdownLink}>
-            //   PT Nusa Halmahera Minerals
-            // </Link>,
             <a
               href="http://www.nhm.co.id/"
               target="_blank"
               className={classes.dropdownLink}
             >
               PT Nusa Halmahera Minerals
-            </a>
+            </a>,
+            <a
+            href="http://www.ptpj.co.id/"
+            target="_blank"
+            className={classes.dropdownLink}
+          >
+            PT Puncakbaru Jayatama
+          </a>,
           ]}
         />
       </ListItem>
