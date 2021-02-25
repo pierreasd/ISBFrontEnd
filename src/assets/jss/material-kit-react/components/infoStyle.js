@@ -55,12 +55,22 @@ const infoStyle = {
     marginTop: "0px",
     fontSize: "14px"
   },
+  titleDark:{
+    ...title,
+    color: "#DEDEDE !important"
+  },
   iconWrapperVertical: {
     float: "none"
   },
   iconVertical: {
     width: "61px",
     height: "61px"
+  },
+  descDark: {
+    overflow: "hidden",
+    marginTop: "0px",
+    fontSize: "14px",
+    color: "#FFF !important"
   }
 };
 
