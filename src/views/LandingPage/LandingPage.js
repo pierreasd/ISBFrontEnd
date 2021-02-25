@@ -21,8 +21,9 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 import Fade from "react-reveal/Fade";
 
 // Sections for this page
-import ProductSection from "./Sections/AboutSection.js";
+import AboutSection from "./Sections/AboutSection.js";
 import ProjectSection from "./Sections/ProjectSection.js";
+import ContactSection from "./Sections/ContactSection.js";
 import TeamSection from "./Sections/TeamSection.js";
 import WorkSection from "./Sections/WorkSection.js";
 import SectionCarousel from "views/Components/Sections/SectionCarousel.js";
@@ -119,8 +120,9 @@ export default function LandingPage(props) {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
             {/* <SectionCarousel img={pix} /> */}
-            <ProductSection />
+            <AboutSection />
             <ProjectSection />
+            <ContactSection />
             {/* <SectionExamples /> */}
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}
@@ -133,8 +135,9 @@ export default function LandingPage(props) {
         <div className={classNames(classes.main, classes.smRaised)}>
           <div className={classes.container}>
             {/* <SectionCarousel img={pix} /> */}
-            <ProductSection />
+            <AboutSection />
             <ProjectSection />
+            <ContactSection />
             {/* <SectionExamples /> */}
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}
