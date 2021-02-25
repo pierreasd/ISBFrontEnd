@@ -3,13 +3,13 @@ import { title } from "assets/jss/material-kit-react.js";
 const productStyle = {
   section: {
     padding: "30px 0",
-    paddingBottom: "50px",
+    paddingBottom: "30px",
     textAlign: "center"
   },
   title: {
     ...title,
     marginBottom: "10px",
-    marginTop: "30px",
+    marginTop: "10px",
     minHeight: "32px",
     textDecoration: "none"
   },

@@ -8,7 +8,7 @@ const projectStyle = {
   title: {
     ...title,
     marginBottom: "10px",
-    marginTop: "30px",
+    marginTop: "10px",
     minHeight: "32px",
     textDecoration: "none"
   },
