@@ -24,6 +24,7 @@ import Fade from "react-reveal/Fade";
 import AboutSection from "./Sections/AboutSection.js";
 import ProjectSection from "./Sections/ProjectSection.js";
 import ContactSection from "./Sections/ContactSection.js";
+import BlankSection from "./Sections/BlankSection.js";
 import TeamSection from "./Sections/TeamSection.js";
 import WorkSection from "./Sections/WorkSection.js";
 import SectionCarousel from "views/Components/Sections/SectionCarousel.js";
@@ -120,9 +121,11 @@ export default function LandingPage(props) {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
             {/* <SectionCarousel img={pix} /> */}
+            <BlankSection />
             <AboutSection />
             <ProjectSection />
             <ContactSection />
+            <BlankSection />
             {/* <SectionExamples /> */}
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}
