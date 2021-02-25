@@ -1,9 +1,9 @@
+import { keys } from "@material-ui/core/styles/createBreakpoints";
 import { title } from "assets/jss/material-kit-react.js";
 
 const contactStyle = {
   section: {
-    padding: "30px 0",
-    paddingBottom: "30px",
+    padding: "30px 10px 60px",
     textAlign: "center",
     backgroundColor: "#212121",
     borderRadius: "5px !important"
