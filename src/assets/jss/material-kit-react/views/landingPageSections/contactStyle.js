@@ -1,17 +1,20 @@
 import { title } from "assets/jss/material-kit-react.js";
 
-const productStyle = {
+const contactStyle = {
   section: {
     padding: "30px 0",
     paddingBottom: "30px",
-    textAlign: "center"
+    textAlign: "center",
+    backgroundColor: "#212121",
+    borderRadius: "5px !important"
   },
   title: {
     ...title,
     marginBottom: "10px",
     marginTop: "10px",
     minHeight: "32px",
-    textDecoration: "none"
+    textDecoration: "none",
+    color: "#DEDEDE"
   },
   description: {
     color: "#777"
@@ -23,4 +26,4 @@ const productStyle = {
   }
 };
 
-export default productStyle;
+export default contactStyle;
