@@ -36,6 +36,7 @@ export default function ContactSection() {
               icon={Phone}
               iconColor="info"
               vertical
+              darkMode
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -45,6 +46,7 @@ export default function ContactSection() {
               icon={Email}
               iconColor="success"
               vertical
+              darkMode
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
@@ -54,6 +56,7 @@ export default function ContactSection() {
               icon={Location}
               iconColor="danger"
               vertical
+              darkMode
             />
           </GridItem>
         </GridContainer>
