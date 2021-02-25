@@ -3,26 +3,18 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Hidden } from "@material-ui/core";
 
-// @material-ui/icons
-import Chat from "@material-ui/icons/Chat";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Fingerprint from "@material-ui/icons/Fingerprint";
-
 // images
-import rock from "assets/img/rock.jpg";
+import pic from "assets/img/rock.jpg";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
-import InfoArea from "components/InfoArea/InfoArea.js";
 
 // custom styles
-import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
+import styles from "assets/jss/material-kit-react/views/landingPageSections/aboutStyle.js";
 import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles(styles);
-
-const animate = {};
 
 export default function ProductSection() {
   const classes = useStyles();
@@ -30,7 +22,7 @@ export default function ProductSection() {
     <div className={classes.section}>
       <Fade bottom cascade>
         <GridContainer justify="center">
-          <GridItem xs={12} sm={12} md={12} lg={10}>
+          <GridItem xs={12} sm={12} md={12} lg={12}>
             <Hidden xsDown>
               <h2 className={classes.title}>About Us</h2>
             </Hidden>
@@ -40,7 +32,7 @@ export default function ProductSection() {
             </Hidden>
 
             <div className={classes.description}>
-              <img src={rock} className={classes.rock} />
+              <img src={pic} className={classes.rock} />
             </div>
 
             <h5 className={classes.description}>
@@ -61,38 +53,6 @@ export default function ProductSection() {
           </GridItem>
         </GridContainer>
       </Fade>
-
-      {/* <div>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
-            <InfoArea
-              title="Free Chat"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={Chat}
-              iconColor="info"
-              vertical
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <InfoArea
-              title="Verified Users"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={VerifiedUser}
-              iconColor="success"
-              vertical
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <InfoArea
-              title="Fingerprint"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={Fingerprint}
-              iconColor="danger"
-              vertical
-            />
-          </GridItem>
-        </GridContainer>
-      </div> */}
     </div>
   );
 }
