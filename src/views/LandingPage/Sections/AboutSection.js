@@ -31,9 +31,8 @@ export default function ProductSection() {
               <h3 className={classes.title}>About Us</h3>
             </Hidden>
 
+            <img src={pic} className={classes.rock} />
             <div className={classes.description}>
-              <img src={pic} className={classes.rock} />
-
               <h5>
                 The Taliwang property covers an area of 31,204 hectares and is
                 located on the west coast of Sumbawa Island, Indonesia, in the
