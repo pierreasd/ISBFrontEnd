@@ -25,7 +25,7 @@ export default function ProjectSection() {
     <div className={classes.section}>
       <Fade bottom cascade>
         <GridContainer justify="center">
-          <GridItem xs={12} sm={12} md={12} lg={10}>
+          <GridItem xs={12} sm={12} md={12} lg={12}>
             <Hidden xsDown>
               <h2 className={classes.title}>Our Projects</h2>
             </Hidden>
