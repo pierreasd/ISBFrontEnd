@@ -21,7 +21,10 @@ const projectStyle = {
     borderRadius: "6px !important",
     maxWidth: "100%",
     maxHeight: "60vh"
-  }
+  },
+  button:{
+    margin: "20px 0 0"
+  },
 };
 
 export default projectStyle;
