@@ -33,23 +33,20 @@ export default function ProductSection() {
 
             <div className={classes.description}>
               <img src={pic} className={classes.rock} />
+
+              <h5>
+                The Taliwang property covers an area of 31,204 hectares and is
+                located on the west coast of Sumbawa Island, Indonesia, in the
+                Taliwangan sub-district, West Sumbawa Regency, about 15 km to
+                the north of Newmont’s Batu Hijau porphyry copper-gold mine.
+                Although the Taliwang property, the subject of Southern Arc’s
+                exploration activities since 2005, host a number of prospects,
+                to date the focus has been on three main targets: Lemonga,
+                Jereweh or J3 and Semoan-Ramit-Raboya. Exploration has been
+                mainly concentrated on the Lemonga gold-silver epithermal vein
+                prospect which shows substantial potential exploration upside.
+              </h5>
             </div>
-
-            <h5 className={classes.description}>
-              The Taliwang property covers an area of 31,204 hectares and is
-              located on the west coast of Sumbawa Island, Indonesia, in the
-              Taliwangan sub-district, West Sumbawa Regency, about 15 km to the
-              north of Newmont’s Batu Hijau porphyry copper-gold mine.
-            </h5>
-
-            <h5 className={classes.description}>
-              Although the Taliwang property, the subject of Southern Arc’s
-              exploration activities since 2005, host a number of prospects, to
-              date the focus has been on three main targets: Lemonga, Jereweh or
-              J3 and Semoan-Ramit-Raboya. Exploration has been mainly
-              concentrated on the Lemonga gold-silver epithermal vein prospect
-              which shows substantial potential exploration upside.
-            </h5>
           </GridItem>
         </GridContainer>
       </Fade>
