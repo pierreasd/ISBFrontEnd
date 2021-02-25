@@ -140,7 +140,7 @@ export default function LandingPage(props) {
             {/* <SectionCarousel img={pix} /> */}
             <AboutSection />
             <ProjectSection />
-            <ContactSection />
+            {/* <ContactSection /> */}
             {/* <SectionExamples /> */}
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}
