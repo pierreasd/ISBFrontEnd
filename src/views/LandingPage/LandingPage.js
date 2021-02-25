@@ -118,18 +118,21 @@ export default function LandingPage(props) {
       </Parallax>
 
       <Hidden smDown>
-        <div className={classNames(classes.main, classes.mainRaised)}>
+        <div className={classNames(classes.main, classes.topRaised)}>
           <div className={classes.container}>
             {/* <SectionCarousel img={pix} /> */}
             <BlankSection />
             <AboutSection />
             <ProjectSection />
-            <ContactSection />
-            <BlankSection />
             {/* <SectionExamples /> */}
             {/* <TeamSection /> */}
             {/* <SectionPills /> */}
             {/* <WorkSection /> */}
+          </div>
+        </div>
+        <div className={classNames(classes.mainDark, classes.bottomRaised)}>
+          <div className={classes.container}>
+            <ContactSection />
           </div>
         </div>
       </Hidden>
@@ -138,8 +141,10 @@ export default function LandingPage(props) {
         <div className={classNames(classes.main, classes.smRaised)}>
           <div className={classes.container}>
             {/* <SectionCarousel img={pix} /> */}
+            <BlankSection />
             <AboutSection />
             <ProjectSection />
+            <BlankSection />
             {/* <ContactSection /> */}
             {/* <SectionExamples /> */}
             {/* <TeamSection /> */}
