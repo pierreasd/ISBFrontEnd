@@ -34,7 +34,7 @@ export default function ContactSection() {
               title="Phone"
               description="(+6221)66677788"
               icon={Phone}
-              iconColor="info"
+              iconColor="success"
               vertical
               darkMode
             />
@@ -44,7 +44,7 @@ export default function ContactSection() {
               title="Email"
               description="info@ptisb.com"
               icon={Email}
-              iconColor="success"
+              iconColor="warning"
               vertical
               darkMode
             />
